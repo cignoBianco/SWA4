@@ -72,8 +72,8 @@ const Signup = () => {
           width: 70,
         }}
       >
-        <Option value="86">+7</Option>
-        <Option value="375">+8</Option>
+        <Option value="7">+7</Option>
+        <Option value="375">+375</Option>
       </Select>
     </Form.Item>
   );
