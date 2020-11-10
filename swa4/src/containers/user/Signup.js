@@ -238,7 +238,7 @@ const Signup = () => {
                   label={
                     <span>
                       ИНН&nbsp;
-                      <Tooltip title="ИНН">
+                      <Tooltip title="Должен состоять из 10 чисел для юридических лиц и 12 чисел — для физических">
                         <QuestionCircleOutlined />
                       </Tooltip>
                     </span>
@@ -251,7 +251,7 @@ const Signup = () => {
                     },
                   ]}
                 >
-                  <Input maxlength="11" />
+                  <Input type="number" minlength="10" maxlength="12" />
                 </Form.Item>
 
                 <Form.Item
