@@ -21,7 +21,7 @@ const Navbar = () => {
         color: 'black'
     }
 
-    const [collapsed, setCollapsed] = useState(0);
+    const [collapsed, setCollapsed] = useState(1);
 
     return (
         <Sider collapsible collapsed={collapsed} onCollapse={()=>{setCollapsed(!collapsed)}}>
@@ -37,6 +37,9 @@ const Navbar = () => {
                     <L href="#" className="nav-text">Что-то</L>
                 </Menu.Item>
                 <SubMenu key="sub1" icon={<UserOutlined />} title="Личный кабинет">
+                <Menu.Item key="3">
+                        <L href="/signup" className="nav-text">Войти</L>
+                    </Menu.Item>
                     <Menu.Item key="3">
                         <L href="/edit-profile" className="nav-text">Редактирвоать профиль</L>
                     </Menu.Item>
@@ -50,7 +53,6 @@ const Navbar = () => {
                         <L href="/logout" className="nav-text"
                         onClick={() => {
                             localStorage.removeItem('user');
-                            window.location.href="/signup";
                         }}
                         >Выйти</L>
                     </Menu.Item>
