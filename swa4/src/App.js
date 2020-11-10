@@ -5,15 +5,21 @@ import Home from './components/Home'
 import About from './components/About'
 import logo from './logo.svg';
 import './App.css';
+import {  Layout } from 'antd';
+const { Content } = Layout
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Fragment>
+            <Layout style={{ minHeight: '100vh' }} className="site-layout">
             <Navbar />
-            <Route exact path='/' component={ Home }>Home</Route>
-            <Route path='/about' component={ About }>About</Route>
+              <Content>
+                <Route exact path='/' component={ Home }></Route>
+                <Route path='/about' component={ About }></Route>
+              </Content>
+            </Layout>
         </Fragment>
       </Router>
     </div>

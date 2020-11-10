@@ -1,3 +1,13 @@
+:root {
+  --dark-red: #950101ff;
+  --international-orange-engineering: #b60201ff;
+  --safety-orange-blaze-orange: #fe680aff;
+  --sunglow: #fcc722ff;
+  --star-command-blue: #027bc4ff;
+  --oxford-blue: #001446ff;
+  --oxford-blue-2: #000c29ff;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +20,48 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.downArrow {
+  position: absolute;
+  bottom: 4em;
+  left: 0;
+  right: 0;
+  animation: 3s opacityNdown;
+}
+
+.buttonInHead {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+.contact-wrapper {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  padding: 1em 0;
+  grid-gap: 1em 0;
+}
+
+.contact-row {
+  display: flex;
+  height: 100%;
+  align-content: center;
+  align-items: center;
+  padding: 0 2em;
+}
+
+.imgTeam {
+  height: 182px;
+}
+
+@keyframes opacityNdown {
+  from {
+      opacity: 100%;
+      bottom: 4em;
+  } to {
+      opacity: 0%;
+      bottom: 2em;
+  }
 }
