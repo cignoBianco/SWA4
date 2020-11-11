@@ -244,7 +244,7 @@ const Signup = () => {
                   label={
                     <span>
                       ИНН&nbsp;
-                      <Tooltip title="Должен состоять из 10 чисел для юридических лиц и 12 чисел — для физических">
+                      <Tooltip title="Должен состоять из 10 цифр для юридических лиц и 12 цифр — для физических">
                         <QuestionCircleOutlined />
                       </Tooltip>
                     </span>
@@ -309,7 +309,9 @@ const Signup = () => {
                   ]}
                   hasFeedback
                 >
-                  <Input.Password minlength="6" />
+                  <Input.Password minlength="6"
+                  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$"
+                   />
                 </Form.Item>
 
                 <Form.Item
@@ -333,7 +335,8 @@ const Signup = () => {
                     }),
                   ]}
                 >
-                  <Input.Password minlength="6" />
+                  <Input.Password minlength="6"
+                  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$" />
                 </Form.Item>
 
                 
@@ -423,6 +426,7 @@ const Signup = () => {
                       type="password"
                       placeholder="Пароль"
                       minlength="6"
+                      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$"
                       />
                   </Form.Item>
                   <Form.Item>
