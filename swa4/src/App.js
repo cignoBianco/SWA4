@@ -16,7 +16,7 @@ function App() {
         <Fragment>
             <Layout style={{ minHeight: '100vh' }} className="site-layout">
             <Navbar />
-              <Content>
+              <Content  theme="dark">
                 <Route exact path='/' component={ Home }></Route>
                 <Route path='/about' component={ About }></Route>
                 <Route path='/signup' component={ Signup }></Route>

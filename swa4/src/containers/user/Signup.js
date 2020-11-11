@@ -224,6 +224,9 @@ const Signup = () => {
                   label={
                     <span>
                       Наименование
+                      <Tooltip title="Наименование организации согласно ЕГРЮЛ">
+                        <QuestionCircleOutlined />
+                      </Tooltip>
                     </span>
                   }
                   rules={[
@@ -283,7 +286,7 @@ const Signup = () => {
                   label="Номер телефона"
                   rules={[
                     {
-                      required: true,
+                      required: false,
                       message: 'Please input your phone number!',
                     },
                   ]}
