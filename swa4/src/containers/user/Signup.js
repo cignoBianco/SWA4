@@ -168,11 +168,12 @@ const Signup = () => {
                     {
                       required: true,
                       message: 'Please input your name!',
-                      whitespace: true,
+                      whitespace: true
                     },
                   ]}
                 >
-                  <Input />
+                  <Input  pattern="^[A-Za-zА-Яа-я][A-Za-zА-Яа-я]+$" type="text" 
+                  title="Only letters"/>
                 </Form.Item>
 
                 <Form.Item
@@ -190,7 +191,8 @@ const Signup = () => {
                     },
                   ]}
                 >
-                  <Input />
+                  <Input   pattern="^[A-Za-zА-Яа-я][A-Za-zА-Яа-я]+$" type="text" 
+                  title="Only letters"/>
                 </Form.Item>
 
                 <Form.Item
@@ -208,7 +210,8 @@ const Signup = () => {
                     },
                   ]}
                 >
-                  <Input />
+                  <Input   pattern="^[A-Za-zА-Яа-я][A-Za-zА-Яа-я]+$" type="text" 
+                  title="Only letters"/>
                 </Form.Item>
                 </>
                 :
@@ -268,7 +271,8 @@ const Signup = () => {
                     },
                   ]}
                 >
-                  <Input />
+                  <Input  pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_'{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                  title="Только латинские символы"/>
                 </Form.Item>
 
                 <Form.Item
