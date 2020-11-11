@@ -173,7 +173,8 @@ const Signup = () => {
                   ]}
                 >
                   <Input  pattern="^[A-Za-zА-Яа-я][A-Za-zА-Яа-я]+$" type="text" 
-                  title="Only letters"/>
+                  title="Only letters"
+                  maxlength="40"/>
                 </Form.Item>
 
                 <Form.Item
@@ -192,7 +193,9 @@ const Signup = () => {
                   ]}
                 >
                   <Input   pattern="^[A-Za-zА-Яа-я][A-Za-zА-Яа-я]+$" type="text" 
-                  title="Only letters"/>
+                  title="Only letters"
+                  maxlength="40"
+                  />
                 </Form.Item>
 
                 <Form.Item
@@ -211,7 +214,7 @@ const Signup = () => {
                   ]}
                 >
                   <Input   pattern="^[A-Za-zА-Яа-я][A-Za-zА-Яа-я]+$" type="text" 
-                  title="Only letters"/>
+                  title="Only letters" maxlength="40" />
                 </Form.Item>
                 </>
                 :
@@ -306,7 +309,7 @@ const Signup = () => {
                   ]}
                   hasFeedback
                 >
-                  <Input.Password />
+                  <Input.Password minlength="6" />
                 </Form.Item>
 
                 <Form.Item
@@ -330,7 +333,7 @@ const Signup = () => {
                     }),
                   ]}
                 >
-                  <Input.Password />
+                  <Input.Password minlength="6" />
                 </Form.Item>
 
                 
