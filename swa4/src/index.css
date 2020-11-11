@@ -1,11 +1,29 @@
 :root {
-  --dark-red: #950101ff;
-  --international-orange-engineering: #b60201ff;
-  --safety-orange-blaze-orange: #fe680aff;
-  --sunglow: #fcc722ff;
-  --star-command-blue: #027bc4ff;
   --oxford-blue: #001446ff;
   --oxford-blue-2: #000c29ff;
+  --medium-slate-blue: #7873E5ff;
+  --brink-pink: #EE6382ff;
+  --space-cadet: #2F2E42ff;
+  --blue-ryb: #1E3FE0ff;
+  --blue-pigment: #32349Bff;
+  --cultured: #F2F2F2ff;
+  --independence: #3F3D56ff;
+}
+
+body .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn,
+body a,  body .ant-tabs-tab:hover {
+  color: var(--blue-ryb);
+}
+
+body .ant-btn-primary, body .ant-radio-inner::after,
+body .ant-tabs-ink-bar, body .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: var(--blue-ryb);
+  border-color: var(--blue-ryb);
+}
+
+body .ant-radio-checked .ant-radio-inner, body .ant-input:hover,
+body .ant-input:focus, body .ant-input-focused {
+  border-color: var(--blue-ryb);
 }
 
 body {
@@ -64,4 +82,9 @@ code {
       opacity: 0%;
       bottom: 2em;
   }
+}
+
+.logoImg {
+  width: 50px;
+  padding-top: 10px;
 }

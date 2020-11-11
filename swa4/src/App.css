@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+.App .ant-layout {
+  background: #fff;
+}
+
+.App .ant-btn-primary {
+  background-color: #0B00E0;
+  border-color: #0B00E0;
+}
+
+.App a.ant-typography, .App  .ant-typography a,
+.App a.ant-typography:active, .App .ant-typography a:active,
+.App a.ant-typography:hover, .App .ant-typography a:hover,
+.App a.ant-typography:focus, .App .ant-typography a:focus,
+.App a.ant-typography:hover, .App .ant-menu-item a:hover,
+.App a.ant-typography:focus, .App .ant-typography a:focus,
+.App a.ant-typography:hover, .App .ant-typography a:hover,
+.App span a:hover, .App a.nav-text, .App a:hover{
+  color: #0B00E0;
+}
+
+body a.ant-typography, body .ant-typography a {
+  color: #fff
+}

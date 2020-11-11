@@ -9,6 +9,7 @@ import {
     UserOutlined,
 } from '@ant-design/icons'
 import './../index.css'
+import logo from './../assets/images/brand/logo.png'
 
 const { Sider } = Layout;
 const { Title, Text, Link : L } = Typography;
@@ -26,7 +27,9 @@ const Navbar = () => {
     return (
         <Sider collapsible collapsed={collapsed} onCollapse={()=>{setCollapsed(!collapsed)}}>
             <div className="logo" >
-                <L href="/" target="_blank"> Лого </L>
+                <L href="/" target="_blank">
+                    <img src={logo} className="logoImg"/>
+                </L>
             </div>
             <Menu theme="dark" defaultSelectedKeys={['/']}
          mode="inline" selectedKeys={[ window.location.pathname ]}> 

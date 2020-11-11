@@ -5,8 +5,8 @@ import Home from './components/Home'
 import About from './components/About'
 import Signup from './containers/user/Signup'
 import logo from './logo.svg';
-import './App.css';
 import {  Layout } from 'antd';
+import './App.css';
 const { Content } = Layout
 
 function App() {
