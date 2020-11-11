@@ -25,13 +25,14 @@ const Navbar = () => {
     const [collapsed, setCollapsed] = useState(1);
 
     return (
-        <Sider collapsible collapsed={collapsed} onCollapse={()=>{setCollapsed(!collapsed)}}>
+        <Sider collapsible collapsed={collapsed} onCollapse={()=>{setCollapsed(!collapsed)}}
+        theme="light">
             <div className="logo" >
                 <L href="/" target="_blank">
                     <img src={logo} className="logoImg"/>
                 </L>
             </div>
-            <Menu theme="dark" defaultSelectedKeys={['/']}
+            <Menu theme="light" defaultSelectedKeys={['/']}
          mode="inline" selectedKeys={[ window.location.pathname ]}> 
                 <Menu.Item key="/" icon={<BarsOutlined />}>
                     <L href="/" className="nav-text">Главная</L>
