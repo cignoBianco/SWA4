@@ -393,16 +393,22 @@ const Signup = () => {
                   width="250px"
               >
                   <Form.Item
-                      name="username"
-                      rules={[
-                      {
-                          required: true,
-                          message: 'Please input your Username!',
-                      },
-                      ]}
-                  >
-                      <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Логин" />
-                  </Form.Item>
+                  name="email"
+                  label="E-mail"
+                  rules={[
+                    {
+                      type: 'email',
+                      message: 'The input is not valid E-mail!',
+                    },
+                    {
+                      required: true,
+                      message: 'Please input your E-mail!',
+                    },
+                  ]}
+                >
+                  <Input  pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_'{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                  title="Только латинские символы"/>
+                </Form.Item>
                   <Form.Item
                       name="password"
                       rules={[
@@ -416,6 +422,7 @@ const Signup = () => {
                       prefix={<LockOutlined className="site-form-item-icon" />}
                       type="password"
                       placeholder="Пароль"
+                      minlength="6"
                       />
                   </Form.Item>
                   <Form.Item>
