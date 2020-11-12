@@ -213,8 +213,28 @@ const Signup = () => {
                     },
                   ]}
                 >
-                  <Input   pattern="^[A-Za-zА-Яа-я-][A-Za-zА-Яа-я-]+$" type="text" 
-                  title="Only letters" maxlength="40" />
+                  <Input   pattern="^[A-Za-zА-Яа-я-]+$" type="text" 
+                  title="Only letters or '-'" maxlength="40" />
+                </Form.Item>
+                <Form.Item
+                  name="inn2"
+                  label={
+                    <span>
+                      ИНН&nbsp;
+                      <Tooltip title="Должен состоять из 10 цифр для юридических лиц и 12 цифр — для физических">
+                        <QuestionCircleOutlined />
+                      </Tooltip>
+                    </span>
+                  }
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input your inn!',
+                      whitespace: true,
+                    },
+                  ]}
+                >
+                  <Input type="number" min="0000000001" minlength="12" maxlength="12" />
                 </Form.Item>
                 </>
                 :
@@ -239,10 +259,7 @@ const Signup = () => {
                 >
                   <Input />
                 </Form.Item>
-                </>
-            }
-               
-               <Form.Item
+                <Form.Item
                   name="inn"
                   label={
                     <span>
@@ -260,8 +277,12 @@ const Signup = () => {
                     },
                   ]}
                 >
-                  <Input type="number" min="0000000001" minlength="10" maxlength="12" />
+                  <Input type="number" min="0000000001" minlength="10" maxlength="10" />
                 </Form.Item>
+                </>
+            }
+               
+               
 
                 <Form.Item
                   name="email"
