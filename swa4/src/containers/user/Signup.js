@@ -234,7 +234,7 @@ const Signup = () => {
                     },
                   ]}
                 >
-                  <Input type="number" min="0000000001" minlength="12" maxlength="12" />
+                  <Input type="number" min="100000000000" max="999999999999" />
                 </Form.Item>
                 </>
                 :
@@ -277,7 +277,7 @@ const Signup = () => {
                     },
                   ]}
                 >
-                  <Input type="number" min="0000000001" minlength="10" maxlength="10" />
+                  <Input type="number" min="1000000000"  max="9999999999" />
                 </Form.Item>
                 </>
             }
