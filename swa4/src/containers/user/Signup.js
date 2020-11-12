@@ -213,7 +213,7 @@ const Signup = () => {
                     },
                   ]}
                 >
-                  <Input   pattern="^[A-Za-zА-Яа-я][A-Za-zА-Яа-я-]+$" type="text" 
+                  <Input   pattern="^[A-Za-zА-Яа-я-][A-Za-zА-Яа-я-]+$" type="text" 
                   title="Only letters" maxlength="40" />
                 </Form.Item>
                 </>
