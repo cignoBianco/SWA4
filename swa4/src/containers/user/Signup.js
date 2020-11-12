@@ -260,7 +260,7 @@ const Signup = () => {
                     },
                   ]}
                 >
-                  <Input type="number" minlength="10" maxlength="12" />
+                  <Input type="number" min="0000000001" minlength="10" maxlength="12" />
                 </Form.Item>
 
                 <Form.Item
@@ -268,17 +268,13 @@ const Signup = () => {
                   label="E-mail"
                   rules={[
                     {
-                      type: 'email',
-                      message: 'The input is not valid E-mail!',
-                    },
-                    {
                       required: true,
                       message: 'Please input your E-mail!',
                     },
                   ]}
+                  pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
                 >
-                  <Input  pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_'{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
-                  title="Только латинские символы"/>
+                  <Input pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" title="not valid email"/>
                 </Form.Item>
 
                 <Form.Item
@@ -313,7 +309,8 @@ const Signup = () => {
                   hasFeedback
                 >
                   <Input.Password minlength="6"
-                  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$"
+                  pattern="^(?=.*\d)(?=.*[a-zа-я])(?=.*[A-ZА-Я])[0-9a-zа-яА-ЯA-Z]{6,}$"
+                  title="Минимум 6 символов, минимум 1 символ в верхнем регистре, минимум 1 символ у нижнем регистре, минимум 1 цифра"
                    />
                 </Form.Item>
 
@@ -339,7 +336,8 @@ const Signup = () => {
                   ]}
                 >
                   <Input.Password minlength="6"
-                  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$" />
+                  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$" 
+                  title="Минимум 6 символов, минимум 1 символ в верхнем регистре, минимум 1 символ у нижнем регистре, минимум 1 цифра" />
                 </Form.Item>
 
                 
@@ -403,17 +401,13 @@ const Signup = () => {
                   label="E-mail"
                   rules={[
                     {
-                      type: 'email',
-                      message: 'The input is not valid E-mail!',
-                    },
-                    {
                       required: true,
                       message: 'Please input your E-mail!',
                     },
                   ]}
+                  pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
                 >
-                  <Input  pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_'{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
-                  title="Только латинские символы"/>
+                  <Input pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" title="not valid email" />
                 </Form.Item>
                   <Form.Item
                       name="password"
@@ -429,7 +423,7 @@ const Signup = () => {
                       type="password"
                       placeholder="Пароль"
                       minlength="6"
-                      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$"
+                      title="Минимум 6 символов"
                       />
                   </Form.Item>
                   <Form.Item>
