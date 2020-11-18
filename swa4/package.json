@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
+    "@fingerprintjs/fingerprintjs": "^3.0.3",
     "antd": "^4.7.2",
     "axios": "^0.21.0",
     "babel-cli": "^6.26.0",

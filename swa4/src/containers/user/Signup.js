@@ -8,6 +8,8 @@ import {  PlusOutlined, UserOutlined, LockOutlined,
 import { StickyContainer, Sticky } from 'react-sticky';
 import Captcha from "react-numeric-captcha";
 import "./captcha.css";
+import Fingerprint from './../../components/FIngerprint.js'
+import axios from 'axios';
 
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
@@ -44,6 +46,20 @@ const tailFormItemLayout = {
 
 const { Content, Footer } = Layout;
 const { TabPane } = Tabs;
+Fingerprint()
+
+const apiLink = "https://anti-criptonit-outsourcing.herokuapp.com/api/";
+const signup = (data) => {
+  const body = JSON.stringify('{ "login": "user@mail.com","password": "12345","orgName": "ООО СофтСофтСофт","innNumber": "0123123123123","phoneNumber": 8005553535}')
+  axios.post(apiLink + "register/entity", body)
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+
 
 const renderTabBar = (props, DefaultTabBar) => (
   <Sticky bottomOffset={80}>
@@ -58,10 +74,30 @@ const Signup = () => {
   const [visible, setVisible] = useState(0);
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
-    localStorage.setItem('user', Date.now());
-    setVisible(0);
-    window.location.href='/';
+    signup1(values)
+   // localStorage.setItem('user', Date.now());
+    //setVisible(0);
+  //  window.location.href='/';
   };
+
+  const signup1 = (data = 0) => {
+    const body = '{ "login": "user@mail.com","password": "12345","orgName": "ООО СофтСофтСофт","innNumber": "0123123123123","phoneNumber": 8005553535}'
+    console.log(1, data)
+    axios.post(apiLink + "register/entity", { 
+      "login": data.email,
+      "password": data.password,
+      "orgName": data.organization,
+      "innNumber": data.inn,
+      "phoneNumber": data.phone
+  })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+  const onSubmit = data => console.log(data);
 
   const [form] = Form.useForm();
 
@@ -140,6 +176,7 @@ const Signup = () => {
                 form={form}
                 name="register"
                 onFinish={onFinish}
+                onSubmit={onSubmit}
                 initialValues={{
                   prefix: '7',
                 }}
@@ -329,7 +366,7 @@ const Signup = () => {
                   ]}
                   hasFeedback
                 >
-                  <Input.Password minlength="6"
+                  <Input.Password minLength="6"
                   pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$"
                   title="Минимум 6 символов, минимум 1 символ в верхнем регистре, минимум 1 символ у нижнем регистре, минимум 1 цифра"
                    />
@@ -356,14 +393,10 @@ const Signup = () => {
                     }),
                   ]}
                 >
-                  <Input.Password minlength="6"
+                  <Input.Password minLength="6"
                   pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$" 
                   title="Минимум 6 символов, минимум 1 символ в верхнем регистре, минимум 1 символ у нижнем регистре, минимум 1 цифра" />
                 </Form.Item>
-
-                
-
-                
 
                 <Form.Item label="Капча">      
                       <Button onClick={()=>{toggleCaptcha(1)}}>Я не робот</Button>
@@ -400,7 +433,7 @@ const Signup = () => {
                   </Checkbox>
                 </Form.Item>
                 <Form.Item {...tailFormItemLayout}>
-                  <Button type="primary" htmlType="submit">
+                  <Button type="primary" htmlType="submit" >
                     Register
                   </Button>
                 </Form.Item>
@@ -443,7 +476,7 @@ const Signup = () => {
                       prefix={<LockOutlined className="site-form-item-icon" />}
                       type="password"
                       placeholder="Пароль"
-                      minlength="6"
+                      minLength="6"
                       title="Минимум 6 символов"
                       />
                   </Form.Item>
@@ -458,7 +491,7 @@ const Signup = () => {
                   </Form.Item>
 
                   <Form.Item>
-                      <Button type="primary" htmlType="submit" className="login-form-button">
+                      <Button type="primary" htmlType="submit" className="login-form-button" >
                       Войти
                       </Button>
                   </Form.Item>
@@ -466,7 +499,7 @@ const Signup = () => {
               </TabPane>
             </Tabs>
           </StickyContainer>
-          
+        
         </Drawer>
       </>
     );
