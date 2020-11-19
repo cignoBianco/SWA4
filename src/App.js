@@ -10,6 +10,13 @@ import './App.css';
 const { Content } = Layout
 
 function App() {
+  axios.post(apiLink + "register/entity", body)
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
   return (
     <div className="App">
       <Router>
