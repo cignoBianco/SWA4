@@ -79,7 +79,7 @@ const Producer = ({match}) => {
     }
 
     async function block() {
-        await axios.producersList(apiLink + "producers/" + params.id + "/block",
+        await axios.put(apiLink + "producers/" + params.id + "/block",
         {
          headers: { Authorization: `Bearer ${token}` }
         })
@@ -119,6 +119,7 @@ const Producer = ({match}) => {
                     <Button type="primary" onClick={() => accreditate()}>Аккредитовать</Button>
                     <Button type="primary" onclick={() => block()}>Добавить в ЧС</Button>
                     </> : <></>}
+                    
                 </Card>
             </Col>
                )
