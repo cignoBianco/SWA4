@@ -22,7 +22,12 @@ const Producers = () => {
             const token = localStorage.getItem('user')
             await axios.get(apiLink + "producers",
             {
-             headers: { Authorization: `Bearer ${token}` }
+             headers: { Authorization: `Bearer ${token}` },
+             
+                params: {
+                  state: 'OVERALL'
+                }
+              
             })
            .then(function (response) {
              console.log(response.data.producersList);
@@ -32,8 +37,9 @@ const Producers = () => {
                  let item;
                  let link = "/producers/" + res.producerId
                 if (res.orgName) {
+                    console.log(res.orgName)
                     item = {
-                        name: <a href={link}>res.orgName</a>,
+                        name: <a href={link}>{res.orgName}</a>,
                         inn: res.inn,
                         registrationDate: res.registrationDate,
                         accreditation: res.accreditation

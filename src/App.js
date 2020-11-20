@@ -7,6 +7,7 @@ import Producer from './containers/Producer'
 import Producers from './containers/Producers'
 import Workers from './containers/Workers'
 import Worker from './containers/Worker'
+import GetAccreditation from './containers/GetAccreditation'
 import Signup from './containers/user/Signup'
 import Confirm from './containers/user/Confirm'
 import logo from './logo.svg';
@@ -31,6 +32,7 @@ function App() {
                 <Route exact path='/workers' component={ Workers }></Route>
                 <Route path='/signup' component={ Signup }></Route>
                 <Route path='/confirm/:code' component={ Confirm }></Route>
+                <Route path='/accreditate' component={ GetAccreditation }></Route>
               </Content>
             </Layout>
         </Fragment>

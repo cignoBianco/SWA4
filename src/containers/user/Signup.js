@@ -9,7 +9,8 @@ import { StickyContainer, Sticky } from 'react-sticky';
 import Captcha from "react-numeric-captcha";
 import "./captcha.css";
 import Fingerprint from './../../components/FIngerprint.js'
-import axios from 'axios';
+import axios from 'axios'
+import jwt from 'jwt-decode'
 
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
@@ -136,8 +137,12 @@ const Signup = () => {
     .then(function (response) {
       console.log(response.accessToken, response);
       localStorage.setItem('user', response.data.accessToken)
+      const toke = jwt(response.data.accessToken); // decode your token here
+      console.log("toke: ", toke)
+      localStorage.setItem('role', toke.role);
+      localStorage.setItem('sub', toke.sub);
       //getall()
-      window.location.href='/';
+      //window.location.href='/';
     })
     .catch(function (error) {
       console.log(error);
@@ -221,7 +226,7 @@ const Signup = () => {
               <Form
                 {...formItemLayout}
                 form={form}
-                name="register"
+                name="Зарегистрироваться"
                 onFinish={onFinish}
                 onSubmit={onSubmit}
                 initialValues={{
