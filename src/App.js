@@ -5,6 +5,8 @@ import Home from './components/Home'
 import About from './components/About'
 import Producer from './containers/Producer'
 import Producers from './containers/Producers'
+import Workers from './containers/Workers'
+import Worker from './containers/Worker'
 import Signup from './containers/user/Signup'
 import Confirm from './containers/user/Confirm'
 import logo from './logo.svg';
@@ -25,6 +27,8 @@ function App() {
                 <Route path='/producer' component={ Producer }></Route>
                 <Route path='/producers/:id' component={ Producer }></Route>
                 <Route exact path='/producers' component={ Producers }></Route>
+                <Route path='/workers/:id' component={ Worker }></Route>
+                <Route exact path='/workers' component={ Workers }></Route>
                 <Route path='/signup' component={ Signup }></Route>
                 <Route path='/confirm/:code' component={ Confirm }></Route>
                 <Route path='/signup' component={ Signup }></Route>
