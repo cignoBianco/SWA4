@@ -31,7 +31,6 @@ function App() {
                 <Route exact path='/workers' component={ Workers }></Route>
                 <Route path='/signup' component={ Signup }></Route>
                 <Route path='/confirm/:code' component={ Confirm }></Route>
-                <Route path='/signup' component={ Signup }></Route>
               </Content>
             </Layout>
         </Fragment>
