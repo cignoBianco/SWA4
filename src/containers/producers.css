@@ -1,0 +1,201 @@
+input[type="checkbox"] {
+    float: left;
+    opacity: 0.01;
+    position: absolute;
+}
+input[type="checkbox"] + label {
+    display: inline-block;
+    line-height: 1.4;
+    margin: 0;
+    padding-left: 25px;
+    position: relative;
+}
+input[type="checkbox"] + label::before {
+    background: no-repeat center center;
+    background-color: #000000;
+    border: 1px solid #74828d;
+    border-radius: 50%;
+    content: "";
+    cursor: pointer;
+    display: block;
+    height: 15px;
+    left: 0;
+    position: absolute;
+    top: 1px;
+    width: 15px;
+}
+input[type="checkbox"]:checked + label {
+    color: #32a9e1;
+}
+input[type="checkbox"]:checked + label::before {
+    background-color: #32a9e1;
+    background-image: url(http://www.jerrylow.com/demo/icons/checkmark.svg);
+    background-size: 13px 10px;
+    border-color: #32a9e1;
+}
+input[type="checkbox"]:focus + label::before {
+    outline: auto 5px -webkit-focus-ring-color;
+}
+.app {
+    background: #f7f7f7;
+    min-height: 100%;
+}
+.filters {
+    box-shadow: inset -3px 0 1px rgba(0,0,0,0.4);
+    color: #74828d;
+    background: #253447;
+    max-height: 100%;
+    overflow: auto;
+    position: fixed;
+    width: 20%;
+}
+.filters__header {
+    background: #1c2939;
+    box-shadow: inset -3px 0 1px rgba(0,0,0,0.4);
+    padding: 20px 40px;
+}
+.filters__header__title {
+    color: white;
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0;
+}
+.filters__inner {
+    padding: 20px 40px;
+}
+.filters__filter ul {
+    margin: 0 0 30px;
+    padding: 0;
+}
+.filters__filter ul li {
+    list-style: none;
+    margin: 0 0 10px;
+}
+.filters__filter__title {
+    border-bottom: 1px solid #000000;
+    color: #567893;
+    font-size: 1.2rem;
+    font-weight: 100;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+.filter-bubbles {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 20px;
+    padding: 0;
+}
+.filter-bubbles:empty {
+    margin-bottom: 0;
+}
+.filter-bubbles li {
+    background: #aad4ff;
+    border-radius: 20px;
+    color: #1c2939;
+    font-size: 1.2rem;
+    list-style: none;
+    margin: 0 10px 10px 0;
+    padding: 7px 10px;
+}
+.filter-bubbles li span {
+    text-transform: capitalize;
+}
+.filter-bubbles li button {
+    background: #469aef;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    margin: 0 0 0 5px;
+    padding: 5px 8px;
+    transform: rotate(45deg);
+}
+li.filters-bubbles__clear-all {
+    background: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+li.filters-bubbles__clear-all button {
+    background: none;
+    border-radius: 0;
+    color: #333;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    transform: none;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 40px auto 20px;
+    padding: 0;
+}
+.pagination li {
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    list-style: none;
+    padding: 5px 0;
+}
+.pagination li:first-of-type {
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    padding-left: 5px;
+}
+.pagination li:nth-of-type(2) {
+    padding-left: 5px;
+}
+.pagination li:last-of-type {
+    border: 1px solid #ccc;
+    border-radius: 0 5px 5px 0;
+    padding-right: 5px;
+}
+.pagination li:nth-last-of-type(2) {
+    padding-right: 5px;
+}
+.pagination li button {
+    background: none;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px 8px 4px;
+    text-align: center;
+}
+.pagination li button.--active {
+    background: #469aef;
+    color: white;
+}
+.pagination li button:disabled {
+    cursor: not-allowed;
+}
+.body {
+    margin-left: 20%;
+    padding: 20px 50px;
+}
+.body table {
+    border-collapse: collapse;
+    margin: 0 -10px;
+    width: calc(120%);
+}
+.body table thead th {
+    border-bottom: 1px solid #ddd;
+    color: #2eacdf;
+    font-size: 1.2rem;
+    padding: 10px 10px;
+    text-align: left;
+    text-transform: uppercase;
+}
+.body table tbody tr:nth-of-type(2n-2) td {
+    background: #ededed;
+}
+.body table tbody tr:hover td {
+    background: #dcedff;
+}
+.body table tbody tr td {
+    padding: 12px 10px;
+}
+.body__header__title {
+    font-weight: 300;
+    margin: 0 0 20px;
+}

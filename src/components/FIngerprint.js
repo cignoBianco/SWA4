@@ -12,6 +12,8 @@ const Fingerprint = async () => {
     // This is the visitor identifier:
     const visitorId = result.visitorId;
     console.log(visitorId);
+    
+    return ''+visitorId+''
 }
 
 export default Fingerprint

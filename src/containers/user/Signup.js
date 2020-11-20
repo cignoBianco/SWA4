@@ -46,12 +46,26 @@ const tailFormItemLayout = {
 
 const { Content, Footer } = Layout;
 const { TabPane } = Tabs;
-Fingerprint()
 
 const apiLink = "https://anti-criptonit-outsourcing.herokuapp.com/api/";
 const signup = (data) => {
   const body = JSON.stringify('{ "login": "user@mail.com","password": "12345","orgName": "ООО СофтСофтСофт","innNumber": "0123123123123","phoneNumber": 8005553535}')
   axios.post(apiLink + "register/entity", body)
+  .then(function (response) {
+    console.log(response);
+    window.location.href='/';
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+
+const getall = () => {
+  const token = localStorage.getItem('user')
+   axios.get(apiLink + "producers",
+   {
+    headers: { Authorization: `Bearer ${token}` }
+})
   .then(function (response) {
     console.log(response);
   })
@@ -72,12 +86,21 @@ const renderTabBar = (props, DefaultTabBar) => (
 const Signup = () => {
 
   const [visible, setVisible] = useState(0);
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log('Received values of form: ', values);
-    signup1(values)
+    getall()
+    await signup1(values)
    // localStorage.setItem('user', Date.now());
     //setVisible(0);
-  //  window.location.href='/';
+    
+  };
+
+  const onFinishLogin = async (values) => {
+    console.log('Received values of form: ', values)
+    await signin(values)
+   // localStorage.setItem('user', Date.now());
+    //setVisible(0);
+    
   };
 
   const signup1 = (data = 0) => {
@@ -97,6 +120,30 @@ const Signup = () => {
       console.log(error);
     });
   }
+
+  const [fing, setFing] = useState(0);
+
+  const signin = (data = 0) => {
+    
+    const fingerprint = Fingerprint().then((data)=>setFing(data))
+    console.log("fingerprint:")
+    console.log(fingerprint)
+    axios.post(apiLink + "auth", { 
+      "login": data.email,
+      "password": data.password,
+      "fingerprint": fing
+  })
+    .then(function (response) {
+      console.log(response.accessToken, response);
+      localStorage.setItem('user', response.data.accessToken)
+      //getall()
+      window.location.href='/';
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   const onSubmit = data => console.log(data);
 
   const [form] = Form.useForm();
@@ -447,7 +494,7 @@ const Signup = () => {
                   initialValues={{
                       remember: true,
                   }}
-                  onFinish={onFinish}
+                  onFinish={onFinishLogin}
                   width="250px"
               >
                   <Form.Item

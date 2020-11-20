@@ -3,20 +3,16 @@ import {BrowserRouter as Router, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import About from './components/About'
+import Producer from './containers/Producer'
+import Producers from './containers/Producers'
 import Signup from './containers/user/Signup'
+import Confirm from './containers/user/Confirm'
 import logo from './logo.svg';
 import {  Layout } from 'antd';
 import './App.css';
 const { Content } = Layout
 
 function App() {
-  axios.post(apiLink + "register/entity", body)
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
   return (
     <div className="App">
       <Router>
@@ -26,6 +22,11 @@ function App() {
               <Content  theme="dark">
                 <Route exact path='/' component={ Home }></Route>
                 <Route path='/about' component={ About }></Route>
+                <Route path='/producer' component={ Producer }></Route>
+                <Route path='/producers/:id' component={ Producer }></Route>
+                <Route exact path='/producers' component={ Producers }></Route>
+                <Route path='/signup' component={ Signup }></Route>
+                <Route path='/confirm/:code' component={ Confirm }></Route>
                 <Route path='/signup' component={ Signup }></Route>
               </Content>
             </Layout>

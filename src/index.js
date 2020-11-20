@@ -4,6 +4,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'antd/dist/antd.css';
+import "bootstrap-css-only/css/bootstrap.min.css";
+import "mdbreact/dist/css/mdb.css";
+import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
