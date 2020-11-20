@@ -7,6 +7,8 @@ import Producer from './containers/Producer'
 import Producers from './containers/Producers'
 import Workers from './containers/Workers'
 import Worker from './containers/Worker'
+import Black from './containers/Black'
+import Blacks from './containers/Blacks'
 import GetAccreditation from './containers/GetAccreditation'
 import Signup from './containers/user/Signup'
 import Confirm from './containers/user/Confirm'
@@ -31,6 +33,8 @@ function App() {
                 <Route exact path='/producers' component={ Producers }></Route>
                 <Route path='/workers/:id' component={ Worker }></Route>
                 <Route exact path='/workers' component={ Workers }></Route>
+                <Route path='/blacks/:id' component={ Black }></Route>
+                <Route exact path='/blacks' component={ Blacks }></Route>
                 <Route path='/signup' component={ Signup }></Route>
                 <Route path='/confirm/:code' component={ Confirm }></Route>
                 <Route path='/accreditate' component={ GetAccreditation }></Route>

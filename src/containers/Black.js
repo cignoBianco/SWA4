@@ -59,7 +59,7 @@ const Producer = ({match}) => {
       /producers/{id}/accreditation
       */
      async function accreditate() {
-        await axios.get(apiLink + "producers/" + params.id + "/unblock",
+        await axios.put(apiLink + "producers/" + params.id + "/unblock",
         {
          headers: { Authorization: `Bearer ${token}` }
         })

@@ -59,7 +59,7 @@ const Producer = ({match}) => {
       /producers/{id}/accreditation
       */
      async function accreditate() {
-        await axios.get(apiLink + "producers/" + params.id + "/accreditation",
+        await axios.put(apiLink + "producers/" + params.id + "/accreditation",
         {
             "accreditation": true
         },
@@ -79,7 +79,7 @@ const Producer = ({match}) => {
     }
 
     async function block() {
-        await axios.get(apiLink + "producers/" + params.id + "/block",
+        await axios.producersList(apiLink + "producers/" + params.id + "/block",
         {
          headers: { Authorization: `Bearer ${token}` }
         })
@@ -114,7 +114,7 @@ const Producer = ({match}) => {
                     <p> {users.individual ? 'Физическое лицо' : 'Юридическое лицо'}</p>
                      
                    <i>{users.registrationDate}</i> 
-                    {(thisUser.role === "ADMIN" || thisUser.role === "LAWYER") ? 
+                    {(role === "ADMIN" || role === "LAWYER") ? 
                     <>
                     <Button type="primary" onClick={() => accreditate()}>Аккредитовать</Button>
                     <Button type="primary" onclick={() => block()}>Добавить в ЧС</Button>
