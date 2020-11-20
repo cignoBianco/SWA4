@@ -44,7 +44,7 @@ const GetAccreditation = ({match}) => {
              console.log(response.data);
              let dat = response.data
              setThisUser(dat)
-             window.location.href="/success-accreditation"
+             
            })
            .catch(function (error) {
              console.log(error);
@@ -69,6 +69,7 @@ const GetAccreditation = ({match}) => {
              console.log(response.data.producersList);
              console.log(333, response.data)
              usersSet(response.data);
+             window.location.href="/success-accreditation"
            })
            .catch(function (error) {
              console.log(error);
@@ -87,7 +88,7 @@ const GetAccreditation = ({match}) => {
         value="Рязанцев Егор"
         disabled
       >
-       <p>Рязанцев Егор</p>
+       <p>{thisUser.orgName ? thisUser.orgName : <>{thisUser.lastName} {thisUser.firstName} {thisUser.middleName}</>}</p>
       </Form.Item>
       <Form.Item
         name={['user', 'individual']}
@@ -98,7 +99,7 @@ const GetAccreditation = ({match}) => {
           },
         ]}
       >
-       <p>Физическое лицо</p>
+       <p>{thisUser.individual ? 'Физическое лицо' : 'Юридическое лицо'}</p>
       </Form.Item>
       <Form.Item
         name={['user', 'inn']}
@@ -112,7 +113,7 @@ const GetAccreditation = ({match}) => {
        <p>78747654933</p>
       </Form.Item>
       <Form.Item name={['user', 'phone']} label="Номер телефона">
-        <p>+79526548788</p>
+        <p>+7{thisUser.phone}</p>
       </Form.Item>
       <Form.Item name={['user', 'stack']} label="Стек технологий">
         <Input.TextArea />
