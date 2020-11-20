@@ -44,6 +44,7 @@ const GetAccreditation = ({match}) => {
              console.log(response.data);
              let dat = response.data
              setThisUser(dat)
+             window.location.href="/success-accreditation"
            })
            .catch(function (error) {
              console.log(error);

@@ -142,7 +142,7 @@ const Signup = () => {
       localStorage.setItem('role', toke.role);
       localStorage.setItem('sub', toke.sub);
       //getall()
-      //window.location.href='/';
+      window.location.href='/';
     })
     .catch(function (error) {
       console.log(error);

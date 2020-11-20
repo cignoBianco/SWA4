@@ -13,6 +13,7 @@ import Confirm from './containers/user/Confirm'
 import logo from './logo.svg';
 import {  Layout } from 'antd';
 import './App.css';
+import SentAccreditation from './containers/SentAccreditation'
 const { Content } = Layout
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
                 <Route path='/signup' component={ Signup }></Route>
                 <Route path='/confirm/:code' component={ Confirm }></Route>
                 <Route path='/accreditate' component={ GetAccreditation }></Route>
+                <Route path='/success-accreditation' component={ SentAccreditation }></Route>
               </Content>
             </Layout>
         </Fragment>
