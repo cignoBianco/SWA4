@@ -27,7 +27,7 @@ const Producers = () => {
              headers: { Authorization: `Bearer ${token}` },
              
                 params: {
-                  state: 'OVERALL'
+                  state: 'block'
                 }
               
             })

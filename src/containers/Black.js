@@ -59,27 +59,7 @@ const Producer = ({match}) => {
       /producers/{id}/accreditation
       */
      async function accreditate() {
-        await axios.get(apiLink + "producers/" + params.id + "/accreditation",
-        {
-            "accreditation": true
-        },
-        {
-         headers: { Authorization: `Bearer ${token}` }
-        })
-       .then(function (response) {
-         console.log(response.data);
-         let dat = response.data
-         window.location.href="/"
-         
-       })
-       .catch(function (error) {
-         console.log(error);
-       });
-      
-    }
-
-    async function block() {
-        await axios.get(apiLink + "producers/" + params.id + "/block",
+        await axios.get(apiLink + "producers/" + params.id + "/unblock",
         {
          headers: { Authorization: `Bearer ${token}` }
         })
@@ -116,8 +96,7 @@ const Producer = ({match}) => {
                    <i>{users.registrationDate}</i> 
                     {(thisUser.role === "ADMIN" || thisUser.role === "LAWYER") ? 
                     <>
-                    <Button type="primary" onClick={() => accreditate()}>Аккредитовать</Button>
-                    <Button type="primary" onclick={() => block()}>Добавить в ЧС</Button>
+                    <Button type="primary" onClick={() => accreditate()}>Убрать из ЧС</Button>
                     </> : <></>}
                 </Card>
             </Col>
