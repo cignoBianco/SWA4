@@ -134,6 +134,10 @@ li.filters-bubbles__clear-all button {
 div.row div.col-sm-12.col-md-7 .dataTables_paginate {
     padding-top: 0;
 }
+body div.row div.col-sm-12.col-md-7 {
+    width: 100%;
+    min-width: 100%;
+}
 .pagination li {
     border-bottom: 1px solid #ccc;
     border-top: 1px solid #ccc;
