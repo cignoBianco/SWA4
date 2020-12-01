@@ -128,8 +128,11 @@ li.filters-bubbles__clear-all button {
 .pagination {
     display: flex;
     justify-content: center;
-    margin: 40px auto 20px;
+    margin: 0px auto 10px;
     padding: 0;
+}
+div.row div.col-sm-12.col-md-7 .dataTables_paginate {
+    padding-top: 0;
 }
 .pagination li {
     border-bottom: 1px solid #ccc;
@@ -198,4 +201,18 @@ li.filters-bubbles__clear-all button {
 .body__header__title {
     font-weight: 300;
     margin: 0 0 20px;
+}
+.dataTables_wrapper {
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
+}
+thead:last-of-type {
+    display: none;
+}
+div.row .col-sm-12.col-md-5:first-of-type {
+    display: none
+}
+div.row .col-sm-12.col-md-5:last-of-type {
+    min-width: 100%;
 }

@@ -5,11 +5,14 @@ import {
     TrophyOutlined,
     BarsOutlined,
     NotificationOutlined,
+    TableOutlined,
     InfoCircleOutlined,
     UserOutlined,
+    SendOutlined
 } from '@ant-design/icons'
 import './../index.css'
 import logo from './../assets/images/brand/logo.png'
+import Signup from './../containers/user/Signup.js'
 
 const { Sider } = Layout;
 const { Title, Text, Link : L } = Typography;
@@ -36,20 +39,15 @@ const Navbar = () => {
                 <Menu.Item key="/" icon={<BarsOutlined />}>
                     <L href="/" className="nav-text">Главная</L>
                 </Menu.Item>
-                <Menu.Item key="2" icon={<TrophyOutlined />}>
-                    <L href="#" className="nav-text">Что-то</L>
+                <Menu.Item key="10" icon={<TableOutlined />}>
+                    <L href="/producers" className="nav-text">Список поставщиков</L>
+                </Menu.Item>
+                <Menu.Item icon={<SendOutlined />}>
+                    <L href="/requests" className="nav-text">Заявки</L>
                 </Menu.Item>
                 <SubMenu key="sub1" icon={<UserOutlined />} title="Личный кабинет">
-                <Menu.Item key="3">
-                        <L href="/signup" className="nav-text">Войти</L>
-                    </Menu.Item>
                     <Menu.Item key="3">
-                        <L href="/edit-profile" className="nav-text">Редактирвоать профиль</L>
-                    </Menu.Item>
-                    <Menu.Item key="4">
-                        <L to="/change-language" className="nav-text">
-                            Язык
-                        </L>
+                        <Signup />
                     </Menu.Item>
                     { localStorage.getItem("user") &&
                     <Menu.Item key="5">
@@ -58,6 +56,9 @@ const Navbar = () => {
                             localStorage.removeItem('user');
                         }}
                         >Выйти</L>
+                    </Menu.Item> &&
+                    <Menu.Item key="3">
+                        <L href="/edit-profile" className="nav-text">Редактирвоать профиль</L>
                     </Menu.Item>
                     }
                 </SubMenu>
@@ -68,7 +69,7 @@ const Navbar = () => {
                     <Menu.Item key="8">
                         <L href="/about" className="nav-text">О нас</L>
                     </Menu.Item>
-                    <Menu.Item key="8">
+                    <Menu.Item key="9">
                         <L href="/contact" className="nav-text">Контакты</L>
                     </Menu.Item>
                 </SubMenu>

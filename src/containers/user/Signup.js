@@ -48,6 +48,7 @@ const tailFormItemLayout = {
 const { Content, Footer } = Layout;
 const { TabPane } = Tabs;
 
+
 const apiLink = "https://anti-criptonit-outsourcing.herokuapp.com/api/";
 const signup = (data) => {
   const body = JSON.stringify('{ "login": "user@mail.com","password": "12345","orgName": "ООО СофтСофтСофт","innNumber": "0123123123123","phoneNumber": 8005553535}')
@@ -202,9 +203,9 @@ const Signup = () => {
 
     return (
       <>
-        <Button type="primary" onClick={() => setVisible(1)}>
-          <PlusOutlined /> signup 
-        </Button>
+        <span onClick={() => setVisible(1)}>
+           Вход
+        </span>
         <Drawer
           //title="Create a new account"
           width={'max-content'}
@@ -225,6 +226,7 @@ const Signup = () => {
               <TabPane tab="Регистрация" key="1" >
               <Form
                 {...formItemLayout}
+                layout="vertical"
                 form={form}
                 name="Зарегистрироваться"
                 onFinish={onFinish}
@@ -256,13 +258,18 @@ const Signup = () => {
                   rules={[
                     {
                       required: true,
-                      message: 'Please input your name!',
+                      message: 'Введите фамилию!',
                       whitespace: true
                     },
+                    {
+                      pattern:"^[A-Za-zА-Яа-я][A-Za-zА-Яа-я-]+$",
+                      message: 'Фамилия должна состоять только из латинских и кириллических символов',
+                      whitespace: true
+                    }
                   ]}
                 >
-                  <Input  pattern="^[A-Za-zА-Яа-я][A-Za-zА-Яа-я-]+$" type="text" 
-                  title="Only letters"
+                  <Input type="text" 
+                  title="Только буквы"
                   maxlength="40"/>
                 </Form.Item>
 
@@ -276,13 +283,18 @@ const Signup = () => {
                   rules={[
                     {
                       required: true,
-                      message: 'Please input your sirname!',
+                      message: 'Введите имя!',
                       whitespace: true,
                     },
+                    ,
+                    {
+                      pattern:"^[A-Za-zА-Яа-я][A-Za-zА-Яа-я-]+$",
+                      message: 'Имя должно состоять только из латинских и кириллических символов',
+                      whitespace: true
+                    }
                   ]}
                 >
-                  <Input   pattern="^[A-Za-zА-Яа-я][A-Za-zА-Яа-я-]+$" type="text" 
-                  title="Only letters"
+                  <Input type="text" 
                   maxlength="40"
                   />
                 </Form.Item>
@@ -297,33 +309,40 @@ const Signup = () => {
                   rules={[
                     {
                       required: true,
-                      message: 'Please input your patronyme!',
+                      message: 'Введите отчество или "-"',
                       whitespace: true,
                     },
+                    {
+                      pattern:"^[A-Za-zА-Яа-я-]+$",
+                      message: 'Отчество должно состоять только из латинских и кириллических символов'
+                    }
                   ]}
                 >
-                  <Input   pattern="^[A-Za-zА-Яа-я-]+$" type="text" 
-                  title="Only letters or '-'" maxlength="40" />
+                  <Input type="text" maxlength="40" />
                 </Form.Item>
                 <Form.Item
                   name="inn2"
                   label={
                     <span>
-                      ИНН&nbsp;
-                      <Tooltip title="Должен состоять из 10 цифр для юридических лиц и 12 цифр — для физических">
-                        <QuestionCircleOutlined />
+                      ИНН
+                      <Tooltip  placement="bottom"  placement="bottomRight"
+                       title="Должен состоять из 10 цифр для юридических лиц и 12 цифр — для физических">
+                        <QuestionCircleOutlined  style={{
+                         
+                          marginLeft: '.5em',
+                          clear: 'both', whiteSpace: 'nowrap'}}/>
                       </Tooltip>
                     </span>
                   }
                   rules={[
                     {
                       required: true,
-                      message: 'Please input your inn!',
+                      message: 'Пожалуйста, введите ИНН',
                       whitespace: true,
                     },
                   ]}
                 >
-                  <Input type="number" min="100000000000" max="999999999999" />
+                  <Input type="string" maxlength="12" minLength="12" />
                 </Form.Item>
                 </>
                 :
@@ -332,16 +351,18 @@ const Signup = () => {
                   name="organization"
                   label={
                     <span>
-                      Наименование
+                      <span>Наименование</span>
                       <Tooltip title="Наименование организации согласно ЕГРЮЛ">
-                        <QuestionCircleOutlined />
+                        <QuestionCircleOutlined style={{
+                          verticalAlign: 'middle',
+                          marginLeft: '.5em'}}/>
                       </Tooltip>
                     </span>
                   }
                   rules={[
                     {
                       required: true,
-                      message: 'Please input your organization name!',
+                      message: 'Введите наименование организации',
                       whitespace: true,
                     },
                   ]}
@@ -354,32 +375,32 @@ const Signup = () => {
                     <span>
                       ИНН&nbsp;
                       <Tooltip title="Должен состоять из 10 цифр для юридических лиц и 12 цифр — для физических">
-                        <QuestionCircleOutlined />
+                        <QuestionCircleOutlined  style={{
+                          verticalAlign: 'middle',
+                          marginLeft: '.5em'}}/>
                       </Tooltip>
                     </span>
                   }
                   rules={[
                     {
                       required: true,
-                      message: 'Please input your inn!',
+                      message: 'Введите ИНН',
                       whitespace: true,
                     },
                   ]}
                 >
-                  <Input type="number" min="1000000000"  max="9999999999" />
+                  <Input type="string" maxlength="10" minLength="10" />
                 </Form.Item>
                 </>
             }
-               
-               
-
+              
                 <Form.Item
                   name="email"
                   label="E-mail"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input your E-mail!',
+                      message: 'Введите email!',
                     },
                   ]}
                   pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
@@ -393,7 +414,7 @@ const Signup = () => {
                   rules={[
                     {
                       required: false,
-                      message: 'Please input your phone number!',
+                      message: 'Введите номер телефона!',
                     },
                   ]}
                 >
@@ -413,7 +434,7 @@ const Signup = () => {
                   rules={[
                     {
                       required: true,
-                      message: 'Please input your password!',
+                      message: 'Введите пароль!',
                     },
                   ]}
                   hasFeedback
@@ -432,7 +453,7 @@ const Signup = () => {
                   rules={[
                     {
                       required: true,
-                      message: 'Please confirm your password!',
+                      message: 'Повторите пароль!',
                     },
                     ({ getFieldValue }) => ({
                       validator(rule, value) {
@@ -440,7 +461,7 @@ const Signup = () => {
                           return Promise.resolve();
                         }
 
-                        return Promise.reject('The two passwords that you entered do not match!');
+                        return Promise.reject('Пароли не совпадают!');
                       },
                     }),
                   ]}
@@ -455,7 +476,9 @@ const Signup = () => {
                     <br/><p style={{color: 'red'}}>{captchaMessage}</p>
                 </Form.Item>
                 { getCaptcha ?
-                <form onSubmit={captchaSubmit}
+                <form
+                layout="vertical"
+                onSubmit={captchaSubmit}
                   style={{textAlign:'-webkit-center',
                   width: '100%',
                   display: 'flex',
@@ -475,7 +498,7 @@ const Signup = () => {
                   rules={[
                     {
                       validator: (_, value) =>
-                        value ? Promise.resolve() : Promise.reject('Should accept agreement'),
+                        value ? Promise.resolve() : Promise.reject('Необходимо принять согласие на обработку персональных данных'),
                     },
                   ]}
                   {...tailFormItemLayout}
@@ -486,7 +509,7 @@ const Signup = () => {
                 </Form.Item>
                 <Form.Item {...tailFormItemLayout}>
                   <Button type="primary" htmlType="submit" >
-                    Register
+                    Зарегистрироваться
                   </Button>
                 </Form.Item>
               </Form>
@@ -501,14 +524,16 @@ const Signup = () => {
                   }}
                   onFinish={onFinishLogin}
                   width="250px"
+                  layout="vertical"
               >
                   <Form.Item
                   name="email"
                   label="E-mail"
+                  labelAlign="left"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input your E-mail!',
+                      message: 'Введите E-mail!',
                     },
                   ]}
                   pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
@@ -517,11 +542,11 @@ const Signup = () => {
                 </Form.Item>
                   <Form.Item
                       name="password"
-                      label="Password"
+                      label="Пароль"
                       rules={[
                       {
                           required: true,
-                          message: 'Please input your password!',
+                          message: 'Введите пароль!',
                       },
                       ]}
                   >
@@ -532,15 +557,6 @@ const Signup = () => {
                       minLength="6"
                       title="Минимум 6 символов"
                       />
-                  </Form.Item>
-                  <Form.Item>
-                      <Form.Item name="remember" valuePropName="checked" noStyle>
-                      <Checkbox>Запомнить меня</Checkbox>
-                      </Form.Item>
-
-                      <a className="login-form-forgot" href="">
-                      Забыли пароль
-                      </a>
                   </Form.Item>
 
                   <Form.Item>

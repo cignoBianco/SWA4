@@ -78,7 +78,7 @@ const Producer = ({match}) => {
       
     }
 
-    async function block() {
+    async function block1() {
         await axios.put(apiLink + "producers/" + params.id + "/block",
         {
          headers: { Authorization: `Bearer ${token}` }
@@ -110,14 +110,15 @@ const Producer = ({match}) => {
                     <h2>{users.orgName} {users.lastName} {users.firstName} {users.middleName}
                     </h2>
                     <p>ИНН: {users.inn}</p>
-                    <p>Дата регистрации: {users.accreditation}</p>
+                    <p>{users.accreditation}</p>
+                    <p>Дата регистрации: <i>{users.registrationDate}</i> </p>
                     <p> {users.individual ? 'Физическое лицо' : 'Юридическое лицо'}</p>
                      
-                   <i>{users.registrationDate}</i> 
+                   
                     {(role === "ADMIN" || role === "LAWYER") ? 
                     <>
                     <Button type="primary" onClick={() => accreditate()}>Аккредитовать</Button>
-                    <Button type="primary" onclick={() => block()}>Добавить в ЧС</Button>
+                    <Button type="primary" onclick={() => block1()}>Добавить в ЧС</Button>
                     </> : <></>}
                     
                 </Card>
