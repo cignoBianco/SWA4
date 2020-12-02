@@ -286,7 +286,7 @@ const Signup = () => {
                       message: 'Введите имя!',
                       whitespace: true,
                     },
-                    ,
+                    
                     {
                       pattern:"^[A-Za-zА-Яа-я][A-Za-zА-Яа-я-]+$",
                       message: 'Имя должно состоять только из латинских и кириллических символов',
@@ -344,6 +344,12 @@ const Signup = () => {
                     {
                       pattern: new RegExp(/\d+/g),
                       message: 'Только цифры!',
+                      whitespace: true
+                    },
+                    {
+                      max: 10,
+                      min: 10,
+                      message: '10 символов!',
                       whitespace: true
                     }
                   ]}
