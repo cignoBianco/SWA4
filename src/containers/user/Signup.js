@@ -262,7 +262,7 @@ const Signup = () => {
                       whitespace: true
                     },
                     {
-                      pattern:"^[A-Za-zА-Яа-я][A-Za-zА-Яа-я-]+$",
+                      pattern:"^[A-Za-zёЁА-Яа-я][A-Za-zёЁА-Яа-я-]+$",
                       message: 'Фамилия должна состоять только из латинских и кириллических символов',
                       whitespace: true
                     }
@@ -288,7 +288,7 @@ const Signup = () => {
                     },
                     
                     {
-                      pattern:"^[A-Za-zА-Яа-я][A-Za-zА-Яа-я-]+$",
+                      pattern:"^[A-Za-zА-ЯёЁа-я][A-Za-zА-ЯёЁа-я-]+$",
                       message: 'Имя должно состоять только из латинских и кириллических символов',
                       whitespace: true
                     }
@@ -313,7 +313,7 @@ const Signup = () => {
                       whitespace: true,
                     },
                     {
-                      pattern:"^[A-Za-zА-Яа-я-]+$",
+                      pattern:"^[A-Za-zА-ЯёЁа-я-]+$",
                       message: 'Отчество должно состоять только из латинских и кириллических символов'
                     }
                   ]}
@@ -383,7 +383,7 @@ const Signup = () => {
                       whitespace: true,
                     },
                     {
-                      pattern:"^[A-Za-zА-Яа-я][A-Za-zА-Яа-я-]+$",
+                      pattern:"^[A-Za-zёЁА-Яа-я][A-Za-zёЁА-Яа-я-]+$",
                       message: 'Наименование должно состоять только из латинских и кириллических символов',
                       whitespace: true
                     }
