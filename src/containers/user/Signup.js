@@ -429,6 +429,10 @@ const Signup = () => {
                       required: true,
                       message: 'Введите email!',
                     },
+                    {
+                      max: 40,
+                      message: 'Не более 400 символов!',
+                    }
                   ]}
                   pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
                 >
