@@ -474,6 +474,10 @@ const Signup = () => {
                       message: 'Введите пароль!',
                     },
                     {
+                      max: 100,
+                      message: 'Длина пароля не должна превышать 100 символов'
+                    },
+                    {
                       pattern:"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$",
                       message:"Минимум 6 символов, минимум 1 символ в верхнем регистре, минимум 1 символ у нижнем регистре, минимум 1 цифра"
                       
@@ -495,6 +499,15 @@ const Signup = () => {
                       required: true,
                       message: 'Повторите пароль!',
                     },
+                    {
+                      max: 100,
+                      message: 'Длина пароля не должна превышать 100 символов'
+                    },
+                    {
+                      pattern:"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$",
+                      message:"Минимум 6 символов, минимум 1 символ в верхнем регистре, минимум 1 символ у нижнем регистре, минимум 1 цифра"
+                      
+                    }
                     ({ getFieldValue }) => ({
                       validator(rule, value) {
                         if (!value || getFieldValue('password') === value) {
@@ -513,7 +526,7 @@ const Signup = () => {
 
                 <Form.Item label="Капча">      
                       <Button onClick={()=>{toggleCaptcha(1)}}>Я не робот</Button>
-                    <br/><p style={{color: 'red'}}>{captchaMessage}</p>
+                    <br/><p>{captchaMessage}</p>
                 </Form.Item>
                 { getCaptcha ?
                 <form
