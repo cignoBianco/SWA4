@@ -507,7 +507,7 @@ const Signup = () => {
                       pattern:"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$",
                       message:"Минимум 6 символов, минимум 1 символ в верхнем регистре, минимум 1 символ у нижнем регистре, минимум 1 цифра"
                       
-                    }
+                    },
                     ({ getFieldValue }) => ({
                       validator(rule, value) {
                         if (!value || getFieldValue('password') === value) {
