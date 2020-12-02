@@ -365,6 +365,11 @@ const Signup = () => {
                       message: 'Введите наименование организации',
                       whitespace: true,
                     },
+                    {
+                      max: 200,
+                      message: 'Максимальное число символов — 200',
+                      whitespace: true,
+                    }
                   ]}
                 >
                   <Input />
