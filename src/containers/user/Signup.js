@@ -448,6 +448,11 @@ const Signup = () => {
                       required: false,
                       message: 'Введите номер телефона!',
                     },
+                    {
+                      pattern: new RegExp(/\d+/g),
+                      message: 'Только цифры!',
+                      whitespace: true
+                    },
                   ]}
                 >
                   <Input
