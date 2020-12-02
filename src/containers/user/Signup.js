@@ -340,6 +340,12 @@ const Signup = () => {
                       message: 'Пожалуйста, введите ИНН',
                       whitespace: true,
                     },
+                    
+                    {
+                      pattern: new RegExp(/\d+/g),
+                      message: 'Только цифры!',
+                      whitespace: true
+                    }
                   ]}
                 >
                   <Input type="string" maxlength="12" minLength="12" />
@@ -397,6 +403,11 @@ const Signup = () => {
                       message: 'Введите ИНН',
                       whitespace: true,
                     },
+                    {
+                      pattern: new RegExp(/\d+/g),
+                      message: 'Только цифры!',
+                      whitespace: true
+                    }
                   ]}
                 >
                   <Input type="string" maxlength="10" minLength="10" />
