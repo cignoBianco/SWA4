@@ -431,10 +431,11 @@ const Signup = () => {
                     },
                     {
                       max: 40,
-                      message: 'Не более 400 символов!',
-                    }
+                      min: 9,
+                      message: 'Не менее 3 и не более 400 символов!',
+                    },
                   ]}
-                  pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                  
                 >
                   <Input pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" title="not valid email"/>
                 </Form.Item>
