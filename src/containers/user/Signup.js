@@ -385,6 +385,10 @@ const Signup = () => {
                       whitespace: true,
                     },
                     {
+                      min: 2,
+                      message: 'Наименование должно состоять из 2 и более букв'
+                    },
+                    {
                       max: 200,
                       message: 'Максимальное число символов — 200',
                       whitespace: true,
