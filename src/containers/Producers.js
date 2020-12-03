@@ -48,10 +48,11 @@ const Producers = () => {
              dat.map(res => {
                  let item;
                  let link = "/producers/" + res.producerId
-                if (res.orgName) {
-                    console.log(res.orgName)
+                 console.log(res, 'res')
+                if (res.organizationName) {
+                    console.log(res.organizationName)
                     item = {
-                        name: <a href={link}>{res.orgName}</a>,
+                        name: <a href={link}>{res.organizationName}</a>,
                         inn: res.inn,
                         registrationDate: res.registrationDate,
                         accreditation: res.accreditation

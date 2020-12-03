@@ -349,7 +349,7 @@ const Signup = () => {
                     },
                     
                     {
-                      pattern: new RegExp(/\d+/g),
+                      pattern: "^\d+$",
                       message: 'Только цифры!',
                       whitespace: true
                     },
@@ -421,7 +421,7 @@ const Signup = () => {
                       whitespace: true,
                     },
                     {
-                      pattern: new RegExp(/\d+/g),
+                      pattern:  "^\d+$",
                       message: 'Только цифры!',
                       whitespace: true
                     }
@@ -465,7 +465,7 @@ const Signup = () => {
                       message: 'Введите номер телефона!',
                     },
                     {
-                      pattern: new RegExp(/\d+/g),
+                      pattern: "^\d+$",
                       message: 'Только цифры!',
                       whitespace: true
                     },
@@ -603,8 +603,19 @@ const Signup = () => {
                       required: true,
                       message: 'Введите E-mail!',
                     },
+                    
+                    {
+                      max: 320,
+                      min: 9,
+                      message: 'Не менее 3 и не более 320 символов!',
+                    },
+                    {
+                      pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$",
+                     // pattern:"^[^\s@]+@[^\s@]+\.[^\s@]+$",
+                      message: 'Неверный формат email'
+                    }
                   ]}
-                  pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                  
                 >
                   <Input pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" title="not valid email" />
                 </Form.Item>
@@ -616,6 +627,11 @@ const Signup = () => {
                           required: true,
                           message: 'Введите пароль!',
                       },
+                      
+                    {
+                      max: 100,
+                      message: 'Длина пароля не должна превышать 100 символов'
+                    },
                       ]}
                   >
                       <Input

@@ -45,6 +45,9 @@ const Navbar = () => {
                 <Menu.Item icon={<SendOutlined />}>
                     <L href="/requests" className="nav-text">Заявки</L>
                 </Menu.Item>
+                <Menu.Item icon={<SendOutlined />}>
+                    <L href="/thisStrangeScreen" className="nav-text">8430</L>
+                </Menu.Item>
                 <SubMenu key="sub1" icon={<UserOutlined />} title="Личный кабинет">
                     <Menu.Item key="3">
                         <Signup />

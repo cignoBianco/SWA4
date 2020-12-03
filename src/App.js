@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Home from './components/Home'
 import About from './components/About'
 import Producer from './containers/Producer'
+import ThisStrangeScreen from './containers/purchase/ThisStrangeScreen'
 import Producers from './containers/Producers'
 import Workers from './containers/Workers'
 import Worker from './containers/Worker'
@@ -38,6 +39,7 @@ function App() {
                 <Route path='/signup' component={ Signup }></Route>
                 <Route path='/confirm/:code' component={ Confirm }></Route>
                 <Route path='/accreditate' component={ GetAccreditation }></Route>
+                <Route path="/thisStrangeScreen" component={ThisStrangeScreen}></Route>
                 <Route path='/success-accreditation' component={ SentAccreditation }></Route>
               </Content>
             </Layout>
