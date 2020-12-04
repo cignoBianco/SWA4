@@ -57,6 +57,7 @@ const Navbar = () => {
                         <L href="/logout" className="nav-text"
                         onClick={() => {
                             localStorage.removeItem('user');
+                            localStorage.removeItem('role');
                         }}
                         >Выйти</L>
                     </Menu.Item> &&

@@ -105,8 +105,8 @@ const Producer = ({match}) => {
             <Col span={8}>
                 <Card
                     hoverable
-                    style={{ width: 640 }}
-                >
+                    style={{ width: 640, textAlign: 'left' }}
+                ><br/>
                     <h2>{users.orgName} {users.lastName} {users.firstName} {users.middleName}
                     </h2>
                     <p>ИНН: {users.inn}</p>
@@ -121,9 +121,9 @@ const Producer = ({match}) => {
                     <p>{users.activity}</p>
 
                     {(role === "ADMIN" || role === "LAWYER") ? 
-                    <>
-                    <Button type="primary" onClick={() => accreditate()}>Аккредитовать</Button>
-                    <Button type="primary" onclick={() => block1()}>Добавить в ЧС</Button>
+                    <><br/>
+                    <Button style={{ width: 640 }} type="primary" onClick={() => accreditate()}>Аккредитовать</Button><br/><br/>
+                    <Button style={{ width: 640 }} type="primary" onclick={() => block1()}>Добавить в ЧС</Button>
                     </> : <></>}
                     
                 </Card>
