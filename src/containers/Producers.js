@@ -79,8 +79,8 @@ const Producers = () => {
         getAll()
       }, []);
 
-      const accreditatedUsers = users.filter(user => user.accreditation === 'accredited');
-      const notAccreditatedUsers = users.filter(user => !user.accreditation === 'accredited');
+      const accreditatedUsers = users.filter(user => user.accreditation === 'ACCREDITED');
+      const notAccreditatedUsers = users.filter(user => user.accreditation !== 'ACCREDITED');
       const individualUsers = users.filter(user => user.individual);
       const notIndividualUsers = users.filter(user => !user.individual);
       const accreditatedAndIndividualUsers = users.filter(user => user.individual && user.accreditated === 'accredited');
@@ -136,7 +136,7 @@ const Producers = () => {
           width: 30
         }
       ]
-  const data = (individuals === 'ALL' && accreditated === 'ALL') ? {
+  let data = (individuals === 'ALL' && accreditated === 'ALL') ? {
     columns: cols,
     rows: users
   } : (individuals === 'true' && accreditated === 'ALL') ? {
@@ -158,6 +158,70 @@ const Producers = () => {
     columns: cols,
     rows: notAccreditatedAndIndividualUsers
   };
+ 
+  const [ind, setInd] = useState(0)
+  const onChangeAgreement = e => {
+    console.log('radio checked', e.target.value);
+    setInd(e.target.value);
+     (e.target.value == 1) ? setIndividuals('true') 
+     : (e.target.value == 2) ?  setIndividuals('false') : 
+     setIndividuals('ALL')
+     console.log(individuals, e.target.value)
+     data = (individuals === 'ALL' && accreditated === 'ALL') ? {
+      columns: cols,
+      rows: users
+    } : (individuals === 'true' && accreditated === 'ALL') ? {
+      columns: cols,
+      rows: individualUsers
+    } : (accreditated === 'true' && individuals === 'ALL') ? {
+      columns: cols,
+      rows: accreditatedUsers
+    } : (accreditated === 'false' && individuals != 'false') ? {
+      columns: cols,
+      rows: notAccreditatedUsers
+    } : (individuals === 'false' && accreditatedUsers != 'false') ? {
+      columns: cols,
+      rows: notIndividualUsers
+    } : (individuals === 'true' && accreditatedUsers === 'true') ? {
+      columns: cols,
+      rows: notAccreditatedAndIndividualUsers
+    } : {
+      columns: cols,
+      rows: notAccreditatedAndIndividualUsers
+    };
+  };
+
+  const [accr, setAccr] = useState(0)
+  const onChangeAccr = e => {
+    console.log('radio checked', e.target.value);
+    setAccr(e.target.value);
+     (e.target.value == 1) ? setAccreditated('true') 
+     : (e.target.value == 2) ?  setAccreditated('false') : 
+     setAccreditated('ALL')
+     console.log(individuals, e.target.value)
+     data = (individuals === 'ALL' && accreditated === 'ALL') ? {
+      columns: cols,
+      rows: users
+    } : (individuals === 'true' && accreditated === 'ALL') ? {
+      columns: cols,
+      rows: individualUsers
+    } : (accreditated === 'true' && individuals === 'ALL') ? {
+      columns: cols,
+      rows: accreditatedUsers
+    } : (accreditated === 'false' && individuals != 'false') ? {
+      columns: cols,
+      rows: notAccreditatedUsers
+    } : (individuals === 'false' && accreditatedUsers != 'false') ? {
+      columns: cols,
+      rows: notIndividualUsers
+    } : (individuals === 'true' && accreditatedUsers === 'true') ? {
+      columns: cols,
+      rows: notAccreditatedAndIndividualUsers
+    } : {
+      columns: cols,
+      rows: notAccreditatedAndIndividualUsers
+    };
+  };
 
   return (
     <>
@@ -167,35 +231,19 @@ const Producers = () => {
       form={form}
       name="Отфильтровать"
     >
-    <Form.Item
-      name="agreement"
-      valuePropName="checked"
-    >
-      <Checkbox>
-        ЮЛ
-      </Checkbox>
-      <Checkbox>
-        ФЛ
-      </Checkbox>
-      <Checkbox>
-        Все
-      </Checkbox>
-    </Form.Item>
+    
+    <Radio.Group name="agreement" onChange={onChangeAgreement} value={ind}>
+      <Radio value={1}>ФЛ</Radio>
+      <Radio value={2}>ЮЛ</Radio>
+      <Radio value={3}>Все</Radio>
+    </Radio.Group>
 
-    <Form.Item
-      name="agreement"
-      valuePropName="checked"
-    >
-      <Checkbox>
-        Аккредитованные
-      </Checkbox>
-      <Checkbox>
-        Неаккредитованные
-      </Checkbox>
-      <Checkbox>
-        Все
-      </Checkbox>
-    </Form.Item>
+    <Radio.Group name="acred" onChange={onChangeAccr} value={accr}>
+      <Radio value={1}>Аккредитованные</Radio>
+      <Radio value={2}>Неаккредитованные</Radio>
+      <Radio value={3}>Все</Radio>
+    </Radio.Group>
+
     </Form>
     <MDBDataTable
       striped
@@ -206,6 +254,7 @@ const Producers = () => {
       entriesLabel={'Поставщиков на странице'}
       searchLabel={"Поиск"}
       noRecordsFoundLabel={"Нет ни одного поставщика"}
+      
     />
     </>
   );
