@@ -122,6 +122,10 @@ accreditation
       striped
       bordered
       data={data}
+      paginationLabel={['Предыдущая', 'Следующая']}
+      entriesLabel={'Поставщиков, добавленных в ЧС, на странице'}
+      searchLabel={"Поиск"}
+      noRecordsFoundLabel={"Нет ни одного поставщика в черном списке"}
     />
   );
 }
