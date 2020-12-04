@@ -105,16 +105,21 @@ const Producer = ({match}) => {
             <Col span={8}>
                 <Card
                     hoverable
-                    style={{ width: 240 }}
+                    style={{ width: 640 }}
                 >
                     <h2>{users.orgName} {users.lastName} {users.firstName} {users.middleName}
                     </h2>
                     <p>ИНН: {users.inn}</p>
                     <p>{users.accreditation}</p>
+                    <p>{users.phone}</p>
+          
                     <p>Дата регистрации: <i>{users.registrationDate}</i> </p>
                     <p> {users.individual ? 'Физическое лицо' : 'Юридическое лицо'}</p>
-                     
-                   
+                    <p>{users.accreditated ? 'Акрредитован' : "Неаккредитован"}</p>  
+                    <p>{users.stack}</p>
+                    <p>{users.quantity ? 'Количество персонала: ' + users.quantity : ''}</p>
+                    <p>{users.activity}</p>
+
                     {(role === "ADMIN" || role === "LAWYER") ? 
                     <>
                     <Button type="primary" onClick={() => accreditate()}>Аккредитовать</Button>
