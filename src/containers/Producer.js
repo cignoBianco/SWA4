@@ -122,8 +122,8 @@ const Producer = ({match}) => {
 
                     {(role === "ADMIN" || role === "LAWYER") ? 
                     <><br/>
-                    <Button style={{ width: 640 }} type="primary" onClick={() => accreditate()}>Аккредитовать</Button><br/><br/>
-                    <Button style={{ width: 640 }} type="primary" onclick={() => block1()}>Добавить в ЧС</Button>
+                    <Button style={{ width: 160 }} type="primary" onClick={() => accreditate()}>Аккредитовать</Button><br/><br/>
+                    <Button style={{ width: 160 }} type="primary" onclick={() => block1()}>Добавить в ЧС</Button>
                     </> : <></>}
                     
                 </Card>
