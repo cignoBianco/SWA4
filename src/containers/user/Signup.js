@@ -49,7 +49,7 @@ const { Content, Footer } = Layout;
 const { TabPane } = Tabs;
 
 
-const apiLink = "https://anti-criptonit-outsourcing.herokuapp.com/api/";
+const apiLink = "https://gitlab.academy.smw.tom.ru/ssp-oct-2020/antikriptonit/backend/";
 const signup = (data) => {
   const body = JSON.stringify('{ "login": "user@mail.com","password": "12345","orgName": "ООО СофтСофтСофт","innNumber": "0123123123123","phoneNumber": 8005553535}')
   axios.post(apiLink + "register/entity", body)
@@ -349,7 +349,7 @@ const Signup = () => {
                     },
                     
                     {
-                      pattern: "^\d+$",
+                      pattern: "^[0-9\b]+$",
                       message: 'Только цифры!',
                       whitespace: true
                     },
@@ -421,7 +421,7 @@ const Signup = () => {
                       whitespace: true,
                     },
                     {
-                      pattern:  "^\d+$",
+                      pattern:  "^[0-9\b]+$",
                       message: 'Только цифры!',
                       whitespace: true
                     }
@@ -465,7 +465,7 @@ const Signup = () => {
                       message: 'Введите номер телефона!',
                     },
                     {
-                      pattern: "^\d+$",
+                      pattern: "^[0-9\b]+$",
                       message: 'Только цифры!',
                       whitespace: true
                     },

@@ -7,7 +7,7 @@ import axios from 'axios'
 
 const Confirm = ({ match }) => {
     const params = match.params
-    const apiLink = "https://anti-criptonit-outsourcing.herokuapp.com/api/"
+    const apiLink = "https://gitlab.academy.smw.tom.ru/ssp-oct-2020/antikriptonit/backend/"
     axios.get(apiLink + "activate/" + params.code)
     .then(function (response) {
         console.log(response);

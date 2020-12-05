@@ -27,7 +27,7 @@ const validateMessages = {
 const GetAccreditation = ({match}) => {
 
     const [users, usersSet] = useState([])
-    const apiLink = "https://anti-criptonit-outsourcing.herokuapp.com/api/"
+    const apiLink = "https://gitlab.academy.smw.tom.ru/ssp-oct-2020/antikriptonit/backend/"
     const params = match.params
     const token = localStorage.getItem('user')
     const role = localStorage.getItem('role')
