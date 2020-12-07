@@ -49,7 +49,7 @@ const { Content, Footer } = Layout;
 const { TabPane } = Tabs;
 
 
-const apiLink = "https://gitlab.academy.smw.tom.ru/ssp-oct-2020/antikriptonit/backend/";
+const apiLink = "https://anti-criptonit-outsourcing.herokuapp.com/api";
 const signup = (data) => {
   const body = JSON.stringify('{ "login": "user@mail.com","password": "12345","orgName": "ООО СофтСофтСофт","innNumber": "0123123123123","phoneNumber": 8005553535}')
   axios.post(apiLink + "register/entity", body)

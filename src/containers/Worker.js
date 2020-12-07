@@ -6,7 +6,7 @@ const { Meta } = Card
 const Producer = ({match}) => {
 
     const [users, usersSet] = useState([])
-    const apiLink = "https://gitlab.academy.smw.tom.ru/ssp-oct-2020/antikriptonit/backend/"
+    const apiLink = "https://anti-criptonit-outsourcing.herokuapp.com/api"
     const params = match.params
 
     useEffect(() => {
