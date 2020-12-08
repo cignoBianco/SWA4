@@ -89,8 +89,9 @@ const columns = [
       // specify the condition of filtering result
       // here is that finding the name started with `value`
       onFilter: (value, record) => record.name.indexOf(value) === 0,
-      sorter: (a, b) => a.name.length - b.name.length,
       sortDirections: ['descend'],
+     
+      sorter: (a, b) => a.name.length - b.name.length,
     },
     {
         title: 'Описание',
@@ -109,31 +110,41 @@ const columns = [
         // specify the condition of filtering result
         // here is that finding the name started with `value`
         onFilter: (value, record) => record.status.indexOf(value) === 0,
-        sorter: (a, b) => a.status.length - b.status.length,
+      //  defaultSortOrder: 'descend',
         sortDirections: ['descend'],
+
+      sorter: (a, b) => a.startingPrice - b.startingPrice,
     },
     {
       title: 'Стартовая цена',
       dataIndex: 'startingPrice',
-      defaultSortOrder: 'descend',
+     // defaultSortOrder: 'descend',
+     sortDirections: ['descend'],
+
       sorter: (a, b) => a.startingPrice - b.startingPrice,
     },
     {
         title: 'Дата начала подачи заявок',
         dataIndex: 'startDate',
-        defaultSortOrder: 'descend',
+       // defaultSortOrder: 'descend',
+       sortDirections: ['descend'],
+
         sorter: (a, b) => a.startDate - b.startDate,
       },
       {
         title: 'Дата окончания подачи заявок',
         dataIndex: 'finishDate',
-        defaultSortOrder: 'descend',
+       // defaultSortOrder: 'descend',
+       sortDirections: ['descend'],
+
         sorter: (a, b) => a.finishDate - b.finishDate,
       },
       {
         title: 'Дата публикации',
         dataIndex: 'publicationDate',
-        defaultSortOrder: 'descend',
+       // defaultSortOrder: 'descend',
+       sortDirections: ['descend'],
+
         sorter: (a, b) => a.publicationDate - b.publicationDate,
       },
     {
