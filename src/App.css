@@ -60,3 +60,13 @@
 body a.ant-typography, body .ant-typography a {
   color: #fff
 }
+
+.purchasesTable {
+  width: 94%;
+}
+
+.flexToCenter {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

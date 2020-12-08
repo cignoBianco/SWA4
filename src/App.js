@@ -17,6 +17,11 @@ import logo from './logo.svg';
 import {  Layout } from 'antd';
 import './App.css';
 import SentAccreditation from './containers/SentAccreditation'
+import Purchase from './containers/purchase/Purchase'
+import Purchases from './containers/purchase/Purchases'
+import Applications from './containers/purchase/application/Applications'
+import Application from './containers/purchase/application/Application'
+import ApplicationCreate from './containers/purchase/application/ApplicationCreate'
 const { Content } = Layout
 
 function App() {
@@ -40,6 +45,11 @@ function App() {
                 <Route path='/confirm/:code' component={ Confirm }></Route>
                 <Route path='/accreditate' component={ GetAccreditation }></Route>
                 <Route path="/thisStrangeScreen" component={ThisStrangeScreen}></Route>
+                <Route exact path='/purchases' component={ Purchases }></Route>
+                <Route exact path='/purchases/:id' component={ Purchase }></Route>
+                <Route exact path='/purchases/:id/applications' component={ Applications }></Route>
+                <Route exact path='/purchases/:id/applications/create' component={ ApplicationCreate }></Route>
+                <Route exact path='/purchases/:id/applications/:appId' component={ Application }></Route>
                 <Route path='/success-accreditation' component={ SentAccreditation }></Route>
               </Content>
             </Layout>

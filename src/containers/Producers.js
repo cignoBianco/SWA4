@@ -22,7 +22,7 @@ const options = [
 const Producers = () => {
 
     const [users, usersSet] = useState([])
-    const apiLink = "https://anti-criptonit-outsourcing.herokuapp.com/api"
+    const apiLink = "https://anti-criptonit-outsourcing.herokuapp.com/api/"
     
     const [form] = Form.useForm();
 

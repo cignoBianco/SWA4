@@ -211,7 +211,7 @@ body div.row div.col-sm-12.col-md-7 {
     margin-left: auto;
     margin-right: auto;
 }
-thead:last-of-type {
+thead:last-of-type:not(:first-of-type) {
     display: none;
 }
 div.row .col-sm-12.col-md-5:first-of-type {

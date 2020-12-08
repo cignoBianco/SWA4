@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Table } from 'antd';
 import { useSSR } from 'react-i18next';
 
-const Home = () => {
+const Purchases = () => {
 
     const apiLink = "https://anti-criptonit-outsourcing.herokuapp.com/api"
     const getPath = '/purchases'
@@ -28,7 +28,7 @@ const Home = () => {
              let result = []
              dat.map(res => {
                  let item;
-                 let link = "/purchase/" + res.purchaseId
+                 let link = "/purchases/" + res.purchaseId
                  console.log(res, 'res')
                 
                  item = {
@@ -205,5 +205,5 @@ const columns = [
     </>)
 }
 
-export default Home
+export default Purchases
 
