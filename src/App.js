@@ -18,6 +18,7 @@ import {  Layout } from 'antd';
 import './App.css';
 import SentAccreditation from './containers/SentAccreditation'
 import Purchase from './containers/purchase/Purchase'
+import FormP from './containers/purchase/FormP'
 import Purchases from './containers/purchase/Purchases'
 import Applications from './containers/purchase/application/Applications'
 import Application from './containers/purchase/application/Application'
@@ -47,6 +48,7 @@ function App() {
                 <Route path="/thisStrangeScreen" component={ThisStrangeScreen}></Route>
                 <Route exact path='/purchases' component={ Purchases }></Route>
                 <Route exact path='/purchases/:id' component={ Purchase }></Route>
+                <Route exact path='/purchase/create' component={ FormP }></Route>
                 <Route exact path='/purchases/:id/applications' component={ Applications }></Route>
                 <Route exact path='/purchases/:id/applications/create' component={ ApplicationCreate }></Route>
                 <Route exact path='/purchases/:id/applications/:appId' component={ Application }></Route>

@@ -49,10 +49,8 @@ const Navbar = () => {
                     <L href="/thisStrangeScreen" className="nav-text">8430</L>
                 </Menu.Item>
                 <SubMenu key="sub1" icon={<UserOutlined />} title="Личный кабинет">
-                    <Menu.Item key="3">
-                        <Signup />
-                    </Menu.Item>
-                    { localStorage.getItem("user") &&
+                    
+                    { localStorage.getItem("user") ? <>
                     <Menu.Item key="5">
                         <L href="/logout" className="nav-text"
                         onClick={() => {
@@ -60,10 +58,14 @@ const Navbar = () => {
                             localStorage.removeItem('role');
                         }}
                         >Выйти</L>
-                    </Menu.Item> &&
+                    </Menu.Item> 
                     <Menu.Item key="3">
                         <L href="/edit-profile" className="nav-text">Редактирвоать профиль</L>
                     </Menu.Item>
+                    </> : <>
+                    <Menu.Item key="3">
+                        <Signup />
+                    </Menu.Item></>
                     }
                 </SubMenu>
                 <SubMenu key="sub2" icon={<InfoCircleOutlined />} title="О нас">
