@@ -354,14 +354,13 @@ const Signup = () => {
                       whitespace: true
                     },
                     {
-                      max: 10,
-                      min: 10,
-                      message: '10 символов!',
+                      len: 12,
+                      message: '12 символов!',
                       whitespace: true
                     }
                   ]}
                 >
-                  <Input type="string" maxlength="12" minLength="12" />
+                  <Input type="string" />
                 </Form.Item>
                 </>
                 :
@@ -425,9 +424,15 @@ const Signup = () => {
                       message: 'Только цифры!',
                       whitespace: true
                     }
+                    ,
+                    {
+                      len:  10,
+                      message: 'Только 10!',
+                      whitespace: true
+                    }
                   ]}
                 >
-                  <Input type="string" maxlength="10" minLength="10" />
+                  <Input type="string" />
                 </Form.Item>
                 </>
             }

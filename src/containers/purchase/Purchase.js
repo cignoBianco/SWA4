@@ -131,6 +131,8 @@ const Purchase = ({match}) => {
        }); 
     }
 
+    let link = "/purchases/" + params.id + '/applications'
+
 
   return (
     <div className="contact-wrapper">
@@ -162,7 +164,8 @@ const Purchase = ({match}) => {
                     <><br/>
                     <Button style={{ width: 160 }} type="primary" onClick={() => finish()}>Завершить</Button><br/><br/>
                     <Button style={{ width: 160 }} type="primary" onClick={() => finishThis()}>Завершить текущий этап и добавить новый этап</Button><br/><br/>
-                    <Button style={{ width: 160 }} type="primary" onClick={() => view()}>Просмотреть заявки</Button><br/><br/>
+                    <Button style={{ width: 160 }} type="primary" ><a href={link}>Просмотреть заявки</a></Button><br/><br/>
+                    
                     <Button style={{ width: 160 }} type="primary" onClick={() => hide()}>Снять с публикации</Button><br/><br/>
                     </> : <>
                     <Button style={{ width: 160 }} type="primary" onClick={() => send()}>Подать заявку</Button><br/><br/>

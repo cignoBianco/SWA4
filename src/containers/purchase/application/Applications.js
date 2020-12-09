@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Tag, Row, Col, Statistic, Card, Button } from 'antd'
 import axios from 'axios'
+import { Table } from 'antd';
 const { Meta } = Card
 
 const Applications = ({match}) => {
@@ -18,7 +19,7 @@ const Applications = ({match}) => {
     useEffect(() => {
         async function getAll() {
             const token = localStorage.getItem('user')
-            await axios.get(apiLink + getPath + params.id + '/applications/', //+ params.appId,
+            await axios.get(apiLink + getPath + params.id + "/accreditation", //+ params.appId,
             
             {
              headers: { Authorization: `Bearer ${token}` }
@@ -136,49 +137,141 @@ const Applications = ({match}) => {
     }
 
 
-  return (
-    <div className="contact-wrapper">
-        <div>
-           <Row gutter={16} style={{textAlign: '-webkit-center', marginTop: 30}}>
-           {users ? 
-               (
-            <Col span={8}>
-                <Card
-                    hoverable
-                    style={{ width: 640, textAlign: 'left' }}
-                ><br/>
-                    <h2>{users.name} 
-                    </h2>
-                    <p>: {users.subject}</p>
-                    <p>Описание: {users.description}</p>
-                    <p>{users.status}</p>
-                    <p>Дата создания: <i>{users.publicationDate}</i> </p>
-                    
-                    <p>Дата начала подачи заявок: <i>{users.startDate}</i> </p>
-                    <p>Дата окончания подачи заявок: <i>{users.finishDate}</i> </p>
-                    <br/><p>Стэк: {users.stack}</p>
-                   
-                    <p>
-                        Стартовая цена: {users.startingPrice} {users.currency}
-                    </p>
+    const [purchaseData, setPurchaseData] = useState('');
 
-                    {(role === "ADMIN" || role === "LAWYER") ? 
-                    <><br/>
-                    <Button style={{ width: 160 }} type="primary" onClick={() => finish()}>Завершить</Button><br/><br/>
-                    <Button style={{ width: 160 }} type="primary" onClick={() => finishThis()}>Завершить текущий этап и добавить новый этап</Button><br/><br/>
-                    <Button style={{ width: 160 }} type="primary" onClick={() => view()}>Просмотреть заявки</Button><br/><br/>
-                    <Button style={{ width: 160 }} type="primary" onClick={() => hide()}>Снять с публикации</Button><br/><br/>
-                    </> : <>
-                    <Button style={{ width: 160 }} type="primary" onClick={() => send()}>Подать заявку</Button><br/><br/>
-                    </>}
-                    
-                </Card>
-            </Col>
-               )
-            : ''}
-        </Row>
+    useEffect(() => {
+        async function getAll() {
+            const token = localStorage.getItem('user')
+            await axios.get(apiLink + getPath + params.id + "/applications",
+            {
+             headers: { Authorization: `Bearer ${token}` },
+             
+                params: {
+                  kind: 'ALL'
+                }
+              
+            })
+           .then(function (response) {
+             console.log(response.data);
+             let dat = response.data
+             let result = []
+             dat.map(res => {
+                 let item;
+                 let link = "/purchases/" + res.purchaseId + '/accreditation'
+                 console.log(res, 'res')
+                
+                 item = {
+                    name: <a href={link}>{res.name}</a>,
+                    individual: res.individual,
+                    firstName: res.firstName,
+                    middleName: res.middleName,
+                    lastName: res.lastName,
+                    orgName: res.orgName,
+                    inn: res.inn,
+                    description: res.description,
+                    publicationDate: res.publicationDate,
+                    producerId: res.producerId,
+                    price: res.price,
+                    id: res.width,
+                    documents: res.documents,
+                }
+                result.push(item)
+             })
+             //usersSet(result);
+             setPurchaseData(result)
+           })
+           .catch(function (error) {
+             console.log(error);
+           });
+          
+        }
+    
+        getAll()
+      }, []);
+
+
+
+
+const columns = [
+    {
+      title: 'Фамилия',
+      dataIndex: 'lastName',
+
+      // specify the condition of filtering result
+      // here is that finding the name started with `value`
+      onFilter: (value, record) => record.lastName.indexOf(value) === 0,
+      sorter: (a, b) => a.lastName.length - b.lastName.length,
+      sortDirections: ['descend'],
+    },
+    {
+        title: 'Имя',
+        dataIndex: 'firstName',
+  
+        // specify the condition of filtering result
+        // here is that finding the name started with `value`
+        onFilter: (value, record) => record.firstName.indexOf(value) === 0,
+        sorter: (a, b) => a.firstName.length - b.firstName.length,
+        sortDirections: ['descend'],
+      },
+      {
+        title: 'Отчество',
+        dataIndex: 'middleName',
+  
+        // specify the condition of filtering result
+        // here is that finding the name started with `value`
+        onFilter: (value, record) => record.middleName.indexOf(value) === 0,
+        sorter: (a, b) => a.middleName.length - b.middleName.length,
+        sortDirections: ['descend'],
+      },
+    {
+        title: 'Описание',
+        dataIndex: 'description',
+  
+        // specify the condition of filtering result
+        // here is that finding the name started with `value`
+        onFilter: (value, record) => record.description.indexOf(value) === 0,
+        sorter: (a, b) => a.description.length - b.description.length,
+        sortDirections: ['descend'],
+    },
+    {
+        title: 'Организация',
+        dataIndex: 'orgName',
+  
+        // specify the condition of filtering result
+        // here is that finding the name started with `value`
+        onFilter: (value, record) => record.orgName.indexOf(value) === 0,
+        sorter: (a, b) => a.orgName.length - b.orgName.length,
+        sortDirections: ['descend'],
+    },
+    {
+      title: 'Цена',
+      dataIndex: 'price',
+      defaultSortOrder: 'descend',
+      sorter: (a, b) => a.price - b.price,
+    },
+      {
+        title: 'Дата публикации',
+        dataIndex: 'publicationDate',
+        defaultSortOrder: 'descend',
+        sorter: (a, b) => a.publicationDate - b.publicationDate,
+      }
+    ,
+    
+  ];
+      
+      function onChange(pagination, filters, sorter, extra) {
+        console.log('params', pagination, filters, sorter, extra);
+      }
+
+
+
+  return (
+    <>
+        <h2>Заявки на закупку</h2>
+        <div className="flexToCenter">
+           <Table columns={columns} dataSource={purchaseData} onChange={onChange} className="purchasesTable" />
         </div>
-    </div>
+    </>
   );
 };
 

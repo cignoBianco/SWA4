@@ -25,6 +25,8 @@ const Navbar = () => {
         color: 'black'
     }
 
+    const role = localStorage.getItem('role')
+
     const [collapsed, setCollapsed] = useState(1);
 
     return (
@@ -39,20 +41,37 @@ const Navbar = () => {
                 <Menu.Item key="/" icon={<BarsOutlined />}>
                     <L href="/" className="nav-text">Главная</L>
                 </Menu.Item>
+                { role && role != 'BAD' && role != 'USER' ? <>
                 <Menu.Item key="10" icon={<TableOutlined />}>
                     <L href="/producers" className="nav-text">Список поставщиков</L>
+                </Menu.Item>
+                <Menu.Item key="10" icon={<TableOutlined />}>
+                    <L href="/producers" className="nav-text">Список закупок</L>
                 </Menu.Item>
                 <Menu.Item icon={<SendOutlined />}>
                     <L href="/requests" className="nav-text">Заявки</L>
                 </Menu.Item>
-                <Menu.Item icon={<SendOutlined />}>
-                    <L href="/thisStrangeScreen" className="nav-text">8430</L>
+                </> : <></> 
+                }
+                { role === "ADMIN" ? <>
+                <Menu.Item key="10" icon={<TableOutlined />}>
+                    <L href="/producers" className="nav-text">Список сотрудников</L>
                 </Menu.Item>
+                <Menu.Item key="10" icon={<TableOutlined />}>
+                    <L href="/create-worker" className="nav-text">Создать сотрудника</L>
+                </Menu.Item>
+                <Menu.Item key="10" icon={<TableOutlined />}>
+                    <L href="/producers" className="nav-text">Черный список</L>
+                </Menu.Item>
+                <Menu.Item key="10" icon={<TableOutlined />}>
+                    <L href="/producers" className="nav-text">Логирование</L>
+                </Menu.Item>
+                </> : <></>
+                }
+                
                 <SubMenu key="sub1" icon={<UserOutlined />} title="Личный кабинет">
-                    <Menu.Item key="3">
-                        <Signup />
-                    </Menu.Item>
-                    { localStorage.getItem("user") &&
+                    
+                    { localStorage.getItem("user") ? <>
                     <Menu.Item key="5">
                         <L href="/logout" className="nav-text"
                         onClick={() => {
@@ -60,10 +79,14 @@ const Navbar = () => {
                             localStorage.removeItem('role');
                         }}
                         >Выйти</L>
-                    </Menu.Item> &&
+                    </Menu.Item> 
                     <Menu.Item key="3">
                         <L href="/edit-profile" className="nav-text">Редактирвоать профиль</L>
                     </Menu.Item>
+                    </> : <>
+                    <Menu.Item key="3">
+                        <Signup />
+                    </Menu.Item></>
                     }
                 </SubMenu>
                 <SubMenu key="sub2" icon={<InfoCircleOutlined />} title="О нас">
