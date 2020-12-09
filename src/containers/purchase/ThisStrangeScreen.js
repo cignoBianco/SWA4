@@ -26,6 +26,7 @@ const Home = () => {
              console.log(response.data);
              let dat = response.data
              let result = []
+             let i = 1
              dat.map(res => {
                  let item;
                  let link = "/purchase/" + res.purchaseId
@@ -43,8 +44,8 @@ const Home = () => {
                     status: res.status,
                     finishDate: res.finishDate,
                     closingDate: res.closingDate,
-                    startingPrice: res.startingPrice
-                    
+                    startingPrice: res.startingPrice,
+                    key: i++
                 }
                 result.push(item)
              })

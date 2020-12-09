@@ -25,6 +25,8 @@ const Navbar = () => {
         color: 'black'
     }
 
+    const role = localStorage.getItem('role')
+
     const [collapsed, setCollapsed] = useState(1);
 
     return (
@@ -39,15 +41,34 @@ const Navbar = () => {
                 <Menu.Item key="/" icon={<BarsOutlined />}>
                     <L href="/" className="nav-text">Главная</L>
                 </Menu.Item>
+                { role != 'BAD' && role != 'USER' ? <>
                 <Menu.Item key="10" icon={<TableOutlined />}>
                     <L href="/producers" className="nav-text">Список поставщиков</L>
+                </Menu.Item>
+                <Menu.Item key="10" icon={<TableOutlined />}>
+                    <L href="/producers" className="nav-text">Список закупок</L>
                 </Menu.Item>
                 <Menu.Item icon={<SendOutlined />}>
                     <L href="/requests" className="nav-text">Заявки</L>
                 </Menu.Item>
-                <Menu.Item icon={<SendOutlined />}>
-                    <L href="/thisStrangeScreen" className="nav-text">8430</L>
+                </> : <></> 
+                }
+                { role === "ADMIN" ? <>
+                <Menu.Item key="10" icon={<TableOutlined />}>
+                    <L href="/producers" className="nav-text">Список сотрудников</L>
                 </Menu.Item>
+                <Menu.Item key="10" icon={<TableOutlined />}>
+                    <L href="/producers" className="nav-text">Создать сотрудника</L>
+                </Menu.Item>
+                <Menu.Item key="10" icon={<TableOutlined />}>
+                    <L href="/producers" className="nav-text">Черный список</L>
+                </Menu.Item>
+                <Menu.Item key="10" icon={<TableOutlined />}>
+                    <L href="/producers" className="nav-text">Логирование</L>
+                </Menu.Item>
+                </> : <></>
+                }
+                
                 <SubMenu key="sub1" icon={<UserOutlined />} title="Личный кабинет">
                     
                     { localStorage.getItem("user") ? <>

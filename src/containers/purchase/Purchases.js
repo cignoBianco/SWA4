@@ -85,13 +85,13 @@ const columns = [
     {
       title: 'Имя',
       dataIndex: 'name',
-      defaultSortOrder: 'descend',
+     // defaultSortOrder: 'descend',
       // specify the condition of filtering result
       // here is that finding the name started with `value`
       onFilter: (value, record) => record.name.indexOf(value) === 0,
       sorter: (a, b) => a.name.length - b.name.length,
       //sortDirections: ['descend'],
-      sortDirections: ['ascend' | 'descend']
+      sortDirections: [ 'descend']
     },
     {
         title: 'Описание',
