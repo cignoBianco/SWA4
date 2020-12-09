@@ -24,7 +24,7 @@ const validateMessages = {
   },
 };
 
-const FormP = ({match}) => {
+const WorkerForm = ({match}) => {
 
     const apiLink = "https://anti-criptonit-outsourcing.herokuapp.com/api"
     const getPath = '/purchases/'
@@ -100,34 +100,17 @@ const formItemLayout = {
   },
 };
 
-      const rangeConfig = {
-        rules: [
-          {
-            type: 'array',
-            required: true,
-            message: 'Введите время!',
-          },
-        ],
-      };
-      const config = {
-        rules: [
-          {
-            type: 'object',
-            required: true,
-            message: 'Введите время!',
-          },
-        ],
-      };
 
   return (
-    <><br/>
-    <h2>Создать закупку</h2><br/>
+    <>
+    <br/>
+    <h2>Создать сотрудника</h2><br/>
     <div className="flexToCenter">
 
     <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
       <Form.Item
-        name={['purchase', 'name']}
-        label="Название"
+        name={['purchase', 'lastName']}
+        label="Фамилия"
         rules={[
           {
             required: true,
@@ -137,27 +120,52 @@ const formItemLayout = {
         <Input />
       </Form.Item>
       <Form.Item
-        name={['purchase', 'subject']}
-        label="Предмет закупки"
-       
-        
+        name={['purchase', 'firstName']}
+        label="Имя"
+        rules={[
+          {
+            required: true,
+          },
+        ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        name={['purchase', 'description']}
-        label="Описание"
+        name={['purchase', 'middleName']}
+        label="Отчество"
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        name={['purchase', 'type']}
+        label="Роль"
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        name={['purchase', 'login']}
+        label="Login"
         rules={[
           {
             required: true
           },
         ]}
       >
-        <Input.TextArea />
+        <Input />
       </Form.Item>
       <Form.Item
-        name={['purchase', 'stack']}
-        label="Стэк технологий"
+        name={['purchase', 'password']}
+        label="Пароль"
         rules={[
           {
             required: true
@@ -166,28 +174,11 @@ const formItemLayout = {
       >
         <Input />
       </Form.Item>
-      <Form.Item
-        name={['purchase', 'startingPrice']}
-        label="Стартовая цена"
-        rules={[
-          {
-            type: 'number',
-            min: 0,
-            max: 999999999,
-          },
-        ]}
-      >
-        <InputNumber />
-      </Form.Item>
-      <Form.Item name="range-picker" 
-      format="DD/MM/YYYY"
-       label="Дата начала — дата окончания" {...rangeConfig}>
-        <RangePicker />
-      </Form.Item>
+      
    
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
         <Button type="primary" htmlType="submit">
-          Submit
+          Создать сотрудника
         </Button>
       </Form.Item>
     </Form>
@@ -197,4 +188,4 @@ const formItemLayout = {
 };
   
 
-export default FormP
+export default WorkerForm

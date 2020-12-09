@@ -58,7 +58,7 @@ const Navbar = () => {
                     <L href="/producers" className="nav-text">Список сотрудников</L>
                 </Menu.Item>
                 <Menu.Item key="10" icon={<TableOutlined />}>
-                    <L href="/producers" className="nav-text">Создать сотрудника</L>
+                    <L href="/create-worker" className="nav-text">Создать сотрудника</L>
                 </Menu.Item>
                 <Menu.Item key="10" icon={<TableOutlined />}>
                     <L href="/producers" className="nav-text">Черный список</L>
