@@ -41,6 +41,13 @@ const Navbar = () => {
                 <Menu.Item key="/" icon={<BarsOutlined />}>
                     <L href="/" className="nav-text">Главная</L>
                 </Menu.Item>
+                {role && role === 'USER' ?
+                <>
+                <Menu.Item key="10" icon={<TableOutlined />}>
+                    <L href="/accreditate" className="nav-text">Подать заявку на аккредитацию</L>
+                </Menu.Item>
+                </> : <></>    
+            }
                 { role && role != 'BAD' && role != 'USER' ? <>
                 <Menu.Item key="10" icon={<TableOutlined />}>
                     <L href="/producers" className="nav-text">Список поставщиков</L>
