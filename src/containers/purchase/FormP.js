@@ -34,8 +34,9 @@ const FormP = ({match}) => {
     let json = values.purchase
     let st = values['range-picker'][0]["_d"]
     st = ''+st+''
-    st2 = ''+st2+''
     let st2 = values['range-picker'][1]["_d"]
+    st2 = ''+st2+''
+    console.log("3", st, st2, st.substring(0,10))
     json['startDate'] = st.substring(0,10)
     json['finishDate'] = st2.substring(0,10)
     console.log("json", json)
