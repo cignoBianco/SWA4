@@ -33,12 +33,21 @@ const FormP = ({match}) => {
     console.log(values);
     let json = values.purchase
     let st = values['range-picker'][0]["_d"]
-    st = ''+st+''
-    let st2 = values['range-picker'][1]["_d"]
-    st2 = ''+st2+''
-    console.log("3", st, st2, st.substring(0,10))
-    json['startDate'] = st.substring(0,10)
-    json['finishDate'] = st2.substring(0,10)
+    let d = st.toISOString()
+    d = d.substring(0,10)
+    d = new Date(d)
+    let cd = d.getDate()+'-'+d.getMonth()+'-'+d.getYear()
+   
+let st2 = values['range-picker'][1]["_d"]
+let d2 = st2.toISOString()
+d2 = d.substring(0,10)
+d2 = new Date(d)
+let cd2 = d.getDate()+'-'+d.getMonth()+'-'+d.getYear()    
+
+
+    console.log(cd, cd2)
+    json['startDate'] = cd
+    json['finishDate'] = cd2
     console.log("json", json)
     const token = localStorage.getItem('user')
             await axios.post(apiLink + getPath ,
