@@ -220,7 +220,7 @@ const columns = [
           selectedRows.array.forEach(element => {
             element.orgName ? w.push(element.orgName) : w.push(element.lastName)
           });
-          setWinners(w)
+          setWinners(selectedRows)
         },
         getCheckboxProps: record => ({
           disabled: record.name === 'Disabled User', // Column configuration not to be checked

@@ -75,6 +75,44 @@ const Producer = ({match}) => {
       
     }
 
+      const onFinish = async (values) => {
+    console.log(333, values);
+    let json = values.purchase
+    let st = values['range-picker'][0]["_d"]
+    let d = st.toISOString()
+    d = d.substring(0,10)
+    d = new Date(d)
+    let cd = d.getDate()+'-'+d.getMonth()+'-'+d.getYear()
+   
+let st2 = values['range-picker'][1]["_d"]
+let d2 = st2.toISOString()
+d2 = d2.substring(0,10)
+d2 = new Date(d)
+let cd2 = d.getDate()+'-'+d.getMonth()+'-'+d.getYear()    
+
+let tempStack = []
+tempStack.push(json.stack)
+json['stack'] = tempStack
+
+    console.log(cd, cd2)
+    json['startDate'] = cd
+    json['finishDate'] = cd2
+    console.log("json", json)
+    const token = localStorage.getItem('user')
+            await axios.post(apiLink + getPath ,
+             json, {
+                headers: { Authorization: `Bearer ${token}` }
+               })
+           .then(function (response) {
+             console.log(response.data);
+             console.log(333, response.data)
+             usersSet(response.data);
+           })
+           .catch(function (error) {
+             console.log(error);
+           });
+  };
+
 
   return (
     <div className="contact-wrapper">
@@ -96,6 +134,21 @@ const Producer = ({match}) => {
                    <i>{users.registrationDate}</i> 
                     {(role === "ADMIN" || role === "LAWYER") ? 
                     <>
+                     <Form {...layout} name="nest-messages" onFinish={onFinish} >
+      
+      <Form.Item
+        name={[ 'bloackComment']}
+        label="Описание"
+        rules={[
+          {
+            required: true
+          },
+        ]}
+      >
+        <Input.TextArea />
+      </Form.Item>
+     
+    </Form>
                     <Button type="primary" onClick={() => accreditate()}>Убрать из ЧС</Button>
                     </> : <></>}
                 </Card>
