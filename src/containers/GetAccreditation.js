@@ -57,10 +57,12 @@ const GetAccreditation = ({match}) => {
 
     const onFinish = async (values) => {
         console.log(values);
+        let arr = []
+        arr.push(values.user.stack)
         await axios.put(apiLink + "producers/" + sub + "/apply",
             {
                 phone: thisUser.phone,
-                stack: values.user.stack
+                stack: arr
             },
             {
              headers: { Authorization: `Bearer ${token}` }
