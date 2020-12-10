@@ -219,7 +219,9 @@ const columns = [
         onChange: (selectedRowKeys, selectedRows) => {
           console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
           let w = []
-          
+          selectedRows.forEach(element => {
+            w.push(element.producerId) 
+          });
           setWinners(selectedRows)
           console.log("new winners", winners)
         },
