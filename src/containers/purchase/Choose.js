@@ -110,7 +110,7 @@ const Applications = ({match}) => {
      // const getPath = '/purchases/'
   
     const onFinish = async (values) => {
-      console.log(values);
+      console.log(values,winners);
       let json = values
       const token = localStorage.getItem('user')
               await axios.put(apiLink + getPath + params.id,
