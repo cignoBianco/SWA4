@@ -30,7 +30,7 @@ const FormP = ({match}) => {
     const getPath = '/purchases/'
 
   const onFinish = async (values) => {
-    console.log(values);
+    console.log(333, values);
     let json = values.purchase
     let st = values['range-picker'][0]["_d"]
     let d = st.toISOString()
@@ -45,7 +45,7 @@ d2 = new Date(d)
 let cd2 = d.getDate()+'-'+d.getMonth()+'-'+d.getYear()    
 
 let tempStack = []
-tempStack.push(values.stack)
+tempStack.push(json.stack)
 json['stack'] = tempStack
 
     console.log(cd, cd2)
