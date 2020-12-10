@@ -15,6 +15,8 @@ const layout = {
 };
 const Applications = ({match}) => {
 
+  const [winners, setWinners] = useState('')
+
     const [users, usersSet] = useState([])
     const apiLink = "https://anti-criptonit-outsourcing.herokuapp.com/api"
     const getPath = '/purchases/'
@@ -211,7 +213,7 @@ const columns = [
         console.log('params', pagination, filters, sorter, extra);
       }
 
-      const [winners, setWinners] = useState('')
+      
 
       const rowSelection = {
         onChange: (selectedRowKeys, selectedRows) => {
@@ -221,6 +223,7 @@ const columns = [
             element.orgName ? w.push(element.orgName) : w.push(element.lastName)
           });
           setWinners(selectedRows)
+          console.log("new winners", winners)
         },
         getCheckboxProps: record => ({
           disabled: record.name === 'Disabled User', // Column configuration not to be checked
