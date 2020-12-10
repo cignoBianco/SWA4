@@ -94,7 +94,7 @@ const Producer = ({match}) => {
                     <p> {users.individual ? 'Физическое лицо' : 'Юридическое лицо'}</p>
                      
                    <i>{users.registrationDate}</i> 
-                    {(thisUser.role === "ADMIN" || thisUser.role === "LAWYER") ? 
+                    {(role === "ADMIN" || role === "LAWYER") ? 
                     <>
                     <Button type="primary" onClick={() => accreditate()}>Убрать из ЧС</Button>
                     </> : <></>}
