@@ -13,6 +13,15 @@ const Producer = ({match}) => {
     const role = localStorage.getItem('role')
     const sub = localStorage.getItem('sub')
 
+  const layout = {
+    labelCol: {
+      span: 8,
+    },
+    wrapperCol: {
+      span: 16,
+    },
+  };
+
     const [thisUser, setThisUser] = useState('');
     useEffect(() => {
         async function getAll() {
@@ -75,6 +84,7 @@ const Producer = ({match}) => {
        });
       
     }
+    const getPath = '/purchases/'
 
       const onFinish = async (values) => {
     console.log(333, values);
