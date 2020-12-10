@@ -48,13 +48,17 @@ const Navbar = () => {
                 </Menu.Item>
                 </> : <></>    
             }
+            {role && role != 'BAD' && role != 'USER' ?
+                <>
+                <Menu.Item key="10" icon={<TableOutlined />}>
+                    <L href="/purchases" className="nav-text">Список закупок</L>
+                </Menu.Item></> : <></>
+            }
                 { role && role != 'BAD' && role != 'USER' ? <>
                 <Menu.Item key="10" icon={<TableOutlined />}>
                     <L href="/producers" className="nav-text">Список поставщиков</L>
                 </Menu.Item>
-                <Menu.Item key="10" icon={<TableOutlined />}>
-                    <L href="/purchases" className="nav-text">Список закупок</L>
-                </Menu.Item>
+                
                 <Menu.Item icon={<SendOutlined />}>
                     <L href="/purchases" className="nav-text">Заявки</L>
                 </Menu.Item>
