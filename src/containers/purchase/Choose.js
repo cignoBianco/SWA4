@@ -222,7 +222,7 @@ const columns = [
           selectedRows.forEach(element => {
             w.push(element.producerId) 
           });
-          setWinners(selectedRows)
+          setWinners(w)
           console.log("new winners", winners)
         },
         getCheckboxProps: record => ({
