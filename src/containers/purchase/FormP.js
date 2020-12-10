@@ -187,7 +187,7 @@ const formItemLayout = {
       <Form.Item name="range-picker" 
       format="DD/MM/YYYY"
        label="Дата начала — дата окончания" {...rangeConfig}>
-        <RangePicker />
+        <RangePicker format="DD/MM/YYYY" />
       </Form.Item>
    
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
