@@ -90,7 +90,7 @@ const Applications = ({match}) => {
                     publicationDate: res.publicationDate,
                     producerId: res.producerId,
                     price: res.price,
-                    id: res.width,
+                    id: res.id,
                     documents: res.documents,
                     key: i++
                 }
@@ -220,13 +220,13 @@ const columns = [
           console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
           let w = []
           selectedRows.forEach(element => {
-            w.push(element.producerId) 
+            w.push(element.id) 
           });
           setWinners(w)
           console.log("new winners", winners)
         },
         getCheckboxProps: record => ({
-          disabled: record.name === 'Disabled User', // Column configuration not to be checked
+          disabled: record.name ===  'Disabled User', // Column configuration not to be checked
           name: record.name,
         }),
       };
