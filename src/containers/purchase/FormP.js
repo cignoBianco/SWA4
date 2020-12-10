@@ -40,7 +40,7 @@ const FormP = ({match}) => {
    
 let st2 = values['range-picker'][1]["_d"]
 let d2 = st2.toISOString()
-d2 = d.substring(0,10)
+d2 = d2.substring(0,10)
 d2 = new Date(d)
 let cd2 = d.getDate()+'-'+d.getMonth()+'-'+d.getYear()    
 
