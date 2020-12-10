@@ -37,7 +37,7 @@ const Producers = () => {
              let result = []
              dat.map(res => {
                  let item;
-                 let link = "/producers/" + res.producerId
+                 let link = "/blacks/" + res.producerId
                 if (res.orgName) {
                     console.log(res.orgName)
                     item = {
