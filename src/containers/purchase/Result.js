@@ -3,7 +3,7 @@ import { Tag, Row, Col, Statistic, Card, Button } from 'antd'
 import axios from 'axios'
 const { Meta } = Card
 
-const Application = ({match}) => {
+const Purchase = ({match}) => {
 
     const [users, usersSet] = useState([])
     const apiLink = "https://anti-criptonit-outsourcing.herokuapp.com/api"
@@ -15,7 +15,7 @@ const Application = ({match}) => {
 
     const [thisUser, setThisUser] = useState('');
 
-   /* useEffect(() => {
+    useEffect(() => {
         async function getAll() {
             const token = localStorage.getItem('user')
             await axios.get(apiLink + getPath + params.id,
@@ -34,61 +34,15 @@ const Application = ({match}) => {
         }
     
         getAll()
-      }, []);*/
-
-
-    let link = "/purchases/" + params.id + '/applications'
-
-
-    useEffect(() => {
-        async function getAll() {
-            const token = localStorage.getItem('user')
-            await axios.get(apiLink + getPath + params.id + "/applications/" + params.appId,
-            {
-             headers: { Authorization: `Bearer ${token}` }
-              
-            })
-           .then(function (response) {
-             console.log(response.data);
-             let dat = response.data
-             let result = []
-             /*dat.map(res => {
-                 let item;
-                 let link = "/purchases/" + res.purchaseId + '/accreditation'
-                 console.log(res, 'res')
-                
-                 item = {
-                    name: <a href={link}>{res.name}</a>,
-                    individual: res.individual,
-                    firstName: res.firstName,
-                    middleName: res.middleName,
-                    lastName: res.lastName,
-                    orgName: res.orgName,
-                    inn: res.inn,
-                    description: res.description,
-                    publicationDate: res.publicationDate,
-                    producerId: res.producerId,
-                    price: res.price,
-                    id: res.width,
-                    documents: res.documents,
-                }
-                result.push(item)
-             })*/
-             //usersSet(result);
-             usersSet(dat)
-           })
-           .catch(function (error) {
-             console.log(error);
-           });
-          
-        }
-    
-        getAll()
       }, []);
 
 
+    let link = "/purchases/" + params.id + '/applications'
+    let linkSend = "/purchase/" + params.id + "/applications"
+    let linkAdmin = "/purchase/" + params.id + "/a/result"
+
   return (
-<div className="contact-wrapper">
+    <div className="contact-wrapper">
         <div>
            <Row gutter={16} style={{textAlign: '-webkit-center', marginTop: 30}}>
            {users ? 
@@ -113,7 +67,9 @@ const Application = ({match}) => {
                         Стартовая цена: {users.startingPrice} {users.currency}
                     </p>
 
-                  
+                    <p>Победители:{users.winners}</p>
+                    <p>Описание:{users.closingDescription}</p>
+
                     
                 </Card>
             </Col>
@@ -125,6 +81,6 @@ const Application = ({match}) => {
   );
 };
 
-export default Application
+export default Purchase
 
 

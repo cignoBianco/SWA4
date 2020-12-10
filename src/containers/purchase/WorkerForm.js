@@ -27,13 +27,11 @@ const validateMessages = {
 const WorkerForm = ({match}) => {
 
     const apiLink = "https://anti-criptonit-outsourcing.herokuapp.com/api"
-    const getPath = '/purchases/'
+    const getPath = '/workers/'
 
   const onFinish = async (values) => {
     console.log(values);
-    let json = values.purchase
-    json['startDate'] = values['range-picker'][0]["_d"]
-    json['finishDate'] = values['range-picker'][1]["_d"]
+    let json = values
     console.log("json", json)
     const token = localStorage.getItem('user')
             await axios.post(apiLink + getPath ,

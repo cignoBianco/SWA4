@@ -40,9 +40,12 @@ const Purchase = ({match}) => {
       /producers/{id}/accreditation
       */
      async function finish() {
-        await axios.put(apiLink + "producers/" + params.id + "/accreditation",
+        await axios.put(apiLink + "purchases/" + params.id ,
         {
-            "accreditation": true
+          "status": "CANCELED",
+          //"winners": ["123", "125"],
+          "closingDesciprtion": "Отменено",
+         // "finishDocuments": ["1", "2", "3", "4", "5"]
         },
         {
          headers: { Authorization: `Bearer ${token}` }
@@ -59,41 +62,47 @@ const Purchase = ({match}) => {
     }
 
     async function finishThis() {
-        await axios.put(apiLink + "producers/" + params.id + "/accreditation",
-        {
-            "accreditation": true
-        },
-        {
-         headers: { Authorization: `Bearer ${token}` }
-        })
-       .then(function (response) {
-         console.log(response.data);
-         let dat = response.data
-         window.location.href="/"
-         
-       })
-       .catch(function (error) {
-         console.log(error);
-       }); 
+      await axios.put(apiLink + "purchases/" + params.id ,
+      {
+        "status": "CANCELED",
+        //"winners": ["123", "125"],
+        "closingDesciprtion": "Отменено",
+       // "finishDocuments": ["1", "2", "3", "4", "5"]
+      },
+      {
+       headers: { Authorization: `Bearer ${token}` }
+      })
+     .then(function (response) {
+       console.log(response.data);
+       let dat = response.data
+       window.location.href="/purchase/create"
+       
+     })
+     .catch(function (error) {
+       console.log(error);
+     }); 
     }
 
     async function hide() {
-        await axios.put(apiLink + "producers/" + params.id + "/accreditation",
-        {
-            "accreditation": true
-        },
-        {
-         headers: { Authorization: `Bearer ${token}` }
-        })
-       .then(function (response) {
-         console.log(response.data);
-         let dat = response.data
-         window.location.href="/"
-         
-       })
-       .catch(function (error) {
-         console.log(error);
-       }); 
+      await axios.put(apiLink + "purchases/" + params.id ,
+      {
+        "status": "CANCELED",
+        //"winners": ["123", "125"],
+        "closingDesciprtion": "Отменено",
+       // "finishDocuments": ["1", "2", "3", "4", "5"]
+      },
+      {
+       headers: { Authorization: `Bearer ${token}` }
+      })
+     .then(function (response) {
+       console.log(response.data);
+       let dat = response.data
+       window.location.href="/"
+       
+     })
+     .catch(function (error) {
+       console.log(error);
+     }); 
     }
 
     async function view() {
@@ -132,7 +141,8 @@ const Purchase = ({match}) => {
     }
 
     let link = "/purchases/" + params.id + '/applications'
-
+    let linkSend = "/purchase/" + params.id + "/applications"
+    let linkAdmin = "/purchase/" + params.id + "/a/result"
 
   return (
     <div className="contact-wrapper">
@@ -162,14 +172,14 @@ const Purchase = ({match}) => {
 
                     {(role === "ADMIN" || role === "LAWYER") ? 
                     <><br/>
-                    <Button style={{ width: 160 }} type="primary" onClick={() => finish()}>Завершить</Button><br/><br/>
+                    <Button style={{ width: 160 }} type="primary"><a href={linkAdmin}>Выбрать победителей и завершить</a></Button><br/><br/>
                     <Button style={{ width: 160 }} type="primary" onClick={() => finishThis()}>Завершить текущий этап и добавить новый этап</Button><br/><br/>
                     <Button style={{ width: 160 }} type="primary" ><a href={link}>Просмотреть заявки</a></Button><br/><br/>
                     
                     <Button style={{ width: 160 }} type="primary" onClick={() => hide()}>Снять с публикации</Button><br/><br/>
                     </> : <>
-                    <Button style={{ width: 160 }} type="primary" onClick={() => send()}>Подать заявку</Button><br/><br/>
-                    </>}
+                    <Button style={{ width: 160 }} type="primary"><a href={linkSend}>Подать заявку</a></Button><br/><br/>
+                    </>} 
                     
                 </Card>
             </Col>

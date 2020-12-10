@@ -18,11 +18,14 @@ import {  Layout } from 'antd';
 import './App.css';
 import SentAccreditation from './containers/SentAccreditation'
 import Purchase from './containers/purchase/Purchase'
-
+import Result from './containers/purchase/Result'
+import Choose from './containers/purchase/Choose'
 import FormP from './containers/purchase/FormP'
 import Purchases from './containers/purchase/Purchases'
 import Applications from './containers/purchase/application/Applications'
 import Application from './containers/purchase/application/Application'
+
+import ApplicationSend from './containers/purchase/application/ApplicationSend'
 import ApplicationCreate from './containers/purchase/application/ApplicationCreate'
 import WorkerForm from './containers/purchase/WorkerForm'
 const { Content } = Layout
@@ -53,6 +56,9 @@ function App() {
                 <Route exact path='/purchase/create' component={ FormP }></Route>
                 <Route exact path='/create-worker' component={ WorkerForm }></Route>
                 <Route exact path='/purchases/:id/applications' component={ Applications }></Route>
+                <Route exact path='/purchase/:id/a/result' component={ Choose }></Route>
+                <Route exact path='/purchase/:id/result' component={ Result }></Route>
+                <Route exact path='/purchase/:id/applications' component={ ApplicationSend }></Route>
                 <Route exact path='/purchases/:id/applications/create' component={ ApplicationCreate }></Route>
                 <Route exact path='/purchases/:id/applications/:appId' component={ Application }></Route>
                 <Route path='/success-accreditation' component={ SentAccreditation }></Route>

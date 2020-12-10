@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { Tag, Row, Col, Statistic, Card, Button } from 'antd'
+import { Tag, Row, Col, Statistic, Card, Button, Form, Input, InputNumber,
+  DatePicker, Space  } from 'antd'
 import axios from 'axios'
 import { Table } from 'antd';
 const { Meta } = Card
 
+const layout = {
+  labelCol: {
+    span: 8,
+  },
+  wrapperCol: {
+    span: 16,
+  },
+};
 const Applications = ({match}) => {
 
     const [users, usersSet] = useState([])
@@ -41,100 +50,6 @@ const Applications = ({match}) => {
         getAll()
       }, []);
 
-      /*
-      /producers/{id}/accreditation
-      */
-     async function finish() {
-        await axios.put(apiLink + "producers/" + params.id + "/accreditation",
-        {
-            "accreditation": true
-        },
-        {
-         headers: { Authorization: `Bearer ${token}` }
-        })
-       .then(function (response) {
-         console.log(response.data);
-         let dat = response.data
-         window.location.href="/"
-         
-       })
-       .catch(function (error) {
-         console.log(error);
-       }); 
-    }
-
-    async function finishThis() {
-        await axios.put(apiLink + "producers/" + params.id + "/accreditation",
-        {
-            "accreditation": true
-        },
-        {
-         headers: { Authorization: `Bearer ${token}` }
-        })
-       .then(function (response) {
-         console.log(response.data);
-         let dat = response.data
-         window.location.href="/"
-         
-       })
-       .catch(function (error) {
-         console.log(error);
-       }); 
-    }
-
-    async function hide() {
-        await axios.put(apiLink + "producers/" + params.id + "/accreditation",
-        {
-            "accreditation": true
-        },
-        {
-         headers: { Authorization: `Bearer ${token}` }
-        })
-       .then(function (response) {
-         console.log(response.data);
-         let dat = response.data
-         window.location.href="/"
-         
-       })
-       .catch(function (error) {
-         console.log(error);
-       }); 
-    }
-
-    async function view() {
-        await axios.get(apiLink + "purchases/" + params.id + "/applications",
-        {
-         headers: { Authorization: `Bearer ${token}` }
-        })
-       .then(function (response) {
-         console.log(response.data);
-         let dat = response.data
-        // window.location.href="/" UUU
-         
-       })
-       .catch(function (error) {
-         console.log(error);
-       }); 
-    }
-
-    async function send() {
-        await axios.put(apiLink + "producers/" + params.id + "/accreditation",
-        {
-            "accreditation": true
-        },
-        {
-         headers: { Authorization: `Bearer ${token}` }
-        })
-       .then(function (response) {
-         console.log(response.data);
-         let dat = response.data
-         window.location.href="/applications"
-         
-       })
-       .catch(function (error) {
-         console.log(error);
-       }); 
-    }
 
 
     const [purchaseData, setPurchaseData] = useState('');
@@ -155,6 +70,7 @@ const Applications = ({match}) => {
              console.log(response.data);
              let dat = response.data
              let result = []
+             let i = 1
              dat.map(res => {
                  let item;
                  let link = "/purchases/" + params.id + '/applications/' + res.id
@@ -174,6 +90,7 @@ const Applications = ({match}) => {
                     price: res.price,
                     id: res.width,
                     documents: res.documents,
+                    key: i++
                 }
                 result.push(item)
              })
@@ -189,8 +106,39 @@ const Applications = ({match}) => {
         getAll()
       }, []);
 
-
-
+      //const apiLink = "https://anti-criptonit-outsourcing.herokuapp.com/api"
+     // const getPath = '/purchases/'
+  
+    const onFinish = async (values) => {
+      console.log(values);
+      let json = values
+      const token = localStorage.getItem('user')
+              await axios.put(apiLink + getPath ,
+               
+               {
+                "status": "CLOSED",
+                "winners": winners,
+                "closingDesciprtion": values.description,
+                "finishDocuments": ["1", "2", "3", "4", "5"]
+               } , {
+                  headers: { Authorization: `Bearer ${token}` }
+                 })
+             .then(function (response) {
+               console.log(response.data);
+               console.log(333, response.data)
+               usersSet(response.data);
+             })
+             .catch(function (error) {
+               console.log(error);
+             });
+    };
+/*
+{
+  "status": "CLOSED",
+  "winners": ["123", "125"],
+  "closingDesciprtion": "Они красавчики",
+  "finishDocuments": ["1", "2", "3", "4", "5"]
+} */
 
 const columns = [
     {
@@ -263,14 +211,57 @@ const columns = [
         console.log('params', pagination, filters, sorter, extra);
       }
 
+      const [winners, setWinners] = useState('')
+
+      const rowSelection = {
+        onChange: (selectedRowKeys, selectedRows) => {
+          console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+          let w = []
+          selectedRows.array.forEach(element => {
+            element.orgName ? w.push(element.orgName) : w.push(element.lastName)
+          });
+          setWinners(w)
+        },
+        getCheckboxProps: record => ({
+          disabled: record.name === 'Disabled User', // Column configuration not to be checked
+          name: record.name,
+        }),
+      };
 
 
+      const [selectionType, setSelectionType] = useState('checkbox');
   return (
     <>
-        <h2>Заявки на закупку</h2>
+        <h2>Выбрать победителей и опубликовать результат</h2>
         <div className="flexToCenter">
-           <Table columns={columns} dataSource={purchaseData} onChange={onChange} className="purchasesTable" />
+           <Table columns={columns} dataSource={purchaseData} onChange={onChange}
+           rowSelection={{
+            type: "checkbox",
+            ...rowSelection,
+          }} 
+           className="purchasesTable" />
         </div>
+        <Form {...layout} name="nest-messages" onFinish={onFinish} >
+      
+      <Form.Item
+        name={[ 'description']}
+        label="Описание"
+        rules={[
+          {
+            required: true
+          },
+        ]}
+      >
+        <Input.TextArea />
+      </Form.Item>
+     
+   
+      <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+        <Button type="primary" htmlType="submit">
+           Опубликовать
+        </Button>
+      </Form.Item>
+    </Form>
     </>
   );
 };

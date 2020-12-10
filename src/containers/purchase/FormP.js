@@ -187,7 +187,7 @@ const formItemLayout = {
    
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
         <Button type="primary" htmlType="submit">
-          Submit
+          Создать
         </Button>
       </Form.Item>
     </Form>

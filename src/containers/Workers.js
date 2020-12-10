@@ -25,19 +25,19 @@ const Workers = () => {
              headers: { Authorization: `Bearer ${token}` }
             })
            .then(function (response) {
-             console.log(response.data.producersList);
-             let dat = response.data.producersList
+             let dat = response.data.workers
+             console.log("dat", dat)
              let result = []
              dat.map(res => {
                  let item;
                  let link = "/workers/" + res.id
                 
                     item = {
-                        name: <a href={link}>res.lastName res.firstName res.middleName</a>,
-                        type: res.type,
+                        name: <a href={link}>{res.lastName} {res.firstName} {res.middleName}</a>,
+                        role: res.role,
                         login: res.login
                     }
-                
+                console.log(1, item)
                 result.push(item)
              })
              usersSet(result);
@@ -74,7 +74,7 @@ accreditation
       },
       {
         label: 'Должность',
-        field: 'type',
+        field: 'role',
         sort: 'asc',
         width: 270
       },

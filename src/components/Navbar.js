@@ -46,25 +46,28 @@ const Navbar = () => {
                     <L href="/producers" className="nav-text">Список поставщиков</L>
                 </Menu.Item>
                 <Menu.Item key="10" icon={<TableOutlined />}>
-                    <L href="/producers" className="nav-text">Список закупок</L>
+                    <L href="/purchases" className="nav-text">Список закупок</L>
                 </Menu.Item>
                 <Menu.Item icon={<SendOutlined />}>
-                    <L href="/requests" className="nav-text">Заявки</L>
+                    <L href="/purchases" className="nav-text">Заявки</L>
+                </Menu.Item>
+                <Menu.Item icon={<SendOutlined />}>
+                    <L href="/purchase/create" className="nav-text">Создать закупку</L>
                 </Menu.Item>
                 </> : <></> 
                 }
                 { role === "ADMIN" ? <>
                 <Menu.Item key="10" icon={<TableOutlined />}>
-                    <L href="/producers" className="nav-text">Список сотрудников</L>
+                    <L href="/workers" className="nav-text">Список сотрудников</L>
                 </Menu.Item>
                 <Menu.Item key="10" icon={<TableOutlined />}>
                     <L href="/create-worker" className="nav-text">Создать сотрудника</L>
                 </Menu.Item>
                 <Menu.Item key="10" icon={<TableOutlined />}>
-                    <L href="/producers" className="nav-text">Черный список</L>
+                    <L href="/blacks" className="nav-text">Черный список</L>
                 </Menu.Item>
                 <Menu.Item key="10" icon={<TableOutlined />}>
-                    <L href="/producers" className="nav-text">Логирование</L>
+                    <L href="/" className="nav-text">Логирование</L>
                 </Menu.Item>
                 </> : <></>
                 }

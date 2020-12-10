@@ -92,22 +92,60 @@ const Signup = () => {
     console.log('Received values of form: ', values);
     getall()
     await signup1(values)
-   // localStorage.setItem('user', Date.now());
-    //setVisible(0);
-    
   };
 
   const onFinishLogin = async (values) => {
     console.log('Received values of form: ', values)
     await signin(values)
-   // localStorage.setItem('user', Date.now());
-    //setVisible(0);
-    
-  };
+};
+
+const [thisInn, setThisInn] = useState('')
+const allInn = (e) => {
+  console.log(form.getFieldsValue(), e.target, form.getFieldValue("name"), form.organization,
+  form.lastName, form, e.target.value)
+  form.setFields(
+    [
+      {
+      name: 'inn',
+      value: e.target.value.substring(0,10),
+      errors: []
+      },
+      {
+        name: 'inn2',
+        value: e.target.value.substring(0,12),
+        errors: []
+        },
+        {
+          name: 'organization',
+          value: form.getFieldsValue().organization || form.getFieldsValue().name,
+          errors: []
+          }
+    ]
+  )
+  
+  setThisInn(e.target.value)
+}
 
   const signup1 = (data = 0) => {
     const body = '{ "login": "user@mail.com","password": "12345","orgName": "ООО СофтСофтСофт","innNumber": "0123123123123","phoneNumber": 8005553535}'
     console.log(1, data)
+    if (person) {
+    axios.post(apiLink + "register/individual", { 
+      "login": data.email,
+      "password": data.password,
+      "firstName": data.firstName,
+      "lastName": data.lastName,
+      "middleName": data.middleName,
+      "innNumber": data.inn2,
+      "phoneNumber": data.phone
+  })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  } else {
     axios.post(apiLink + "register/entity", { 
       "login": data.email,
       "password": data.password,
@@ -122,6 +160,8 @@ const Signup = () => {
       console.log(error);
     });
   }
+  
+}
 
   const [fing, setFing] = useState(0);
 
@@ -274,7 +314,7 @@ const Signup = () => {
                 >
                   <Input type="text" 
                   title="Только буквы"
-                  maxlength="40"/>
+                  maxLength="40"/>
                 </Form.Item>
 
                 <Form.Item
@@ -302,7 +342,7 @@ const Signup = () => {
                   ]}
                 >
                   <Input type="text" 
-                  maxlength="40"
+                  maxLength="40"
                   />
                 </Form.Item>
 
@@ -325,9 +365,10 @@ const Signup = () => {
                     }
                   ]}
                 >
-                  <Input type="text" maxlength="40" />
+                  <Input type="text" maxLength="40" />
                 </Form.Item>
                 <Form.Item
+                  value={thisInn} 
                   name="inn2"
                   label={
                     <span>
@@ -360,7 +401,7 @@ const Signup = () => {
                     }
                   ]}
                 >
-                  <Input type="string" />
+                  <Input type="string" onChange={(e) =>allInn(e)} value={thisInn} />
                 </Form.Item>
                 </>
                 :
@@ -402,6 +443,7 @@ const Signup = () => {
                   <Input />
                 </Form.Item>
                 <Form.Item
+                  value={thisInn} 
                   name="inn"
                   label={
                     <span>
@@ -432,7 +474,7 @@ const Signup = () => {
                     }
                   ]}
                 >
-                  <Input type="string" />
+                  <Input type="string"  onChange={(e) =>allInn(e)} value={thisInn} />
                 </Form.Item>
                 </>
             }
