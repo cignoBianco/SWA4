@@ -219,9 +219,7 @@ const columns = [
         onChange: (selectedRowKeys, selectedRows) => {
           console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
           let w = []
-          selectedRows.array.forEach(element => {
-            element.orgName ? w.push(element.orgName) : w.push(element.lastName)
-          });
+          
           setWinners(selectedRows)
           console.log("new winners", winners)
         },
