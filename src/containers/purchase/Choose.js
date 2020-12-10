@@ -121,7 +121,7 @@ const Applications = ({match}) => {
                 "status": "CLOSED",
                 "winners": winners,
                 "closingDescription": values.description,
-                "finishDocuments": ["963c7d42-df20-4d3d-b851-c78b3cdb5d69"]
+                "finishDocuments": ["6a1e8c85-9de8-4b64-8028-9d42f6f1f682"]
                } , {
                   headers: { Authorization: `Bearer ${token}` }
                  })
