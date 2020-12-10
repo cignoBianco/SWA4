@@ -113,7 +113,7 @@ const Applications = ({match}) => {
       console.log(values);
       let json = values
       const token = localStorage.getItem('user')
-              await axios.put(apiLink + getPath ,
+              await axios.put(apiLink + getPath + params.id,
                
                {
                 "status": "CLOSED",
